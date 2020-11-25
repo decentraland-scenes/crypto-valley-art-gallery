@@ -1,4 +1,4 @@
-import { NFT } from './nft'
+import { NFT } from "./nft"
 import resources from "../resources"
 
 // Sound
@@ -38,64 +38,51 @@ enum PictureFrameStyle {
 export async function loadPictures(scene: Entity) {
   try {
     // Grab data from https://dclcms.club
-    let targetUrl = 'https://dclcms.club/api/pictureframes?format=json&gallery=cvag'
+    let targetUrl = "https://dclcms.club/api/pictureframes_video?format=json&gallery=cvag"
     // let response = await fetch(proxyUrl + targetUrl)
     let response = await fetch(targetUrl)
     let responseData = await response.json()
 
     // Number of objects in JSON
-    let count = Object.keys(responseData.results).length
+    let count = Object.keys(responseData.picture_frames).length
 
-    if (responseData.results) {
-      log('Request success')
-      log('Count: ', count)
+    if (responseData.picture_frames) {
+      log("Request success")
+      log("Count: ", count)
       for (let i = 0; i <= count; i++) {
         // Creating picture frame v2
         const picture = new NFT(
-          new NFTShape(
-            'ethereum://' + responseData.results[i].contract_address + '/' + responseData.results[i].token_id,
-            {
-              style: PictureFrameStyle[String(responseData.results[i].frame)],
-              color: Color3.FromInts(
-                responseData.results[i].color_rgb[0],
-                responseData.results[i].color_rgb[1],
-                responseData.results[i].color_rgb[2]
-              ),
-            }
-          ),
+          new NFTShape("ethereum://" + responseData.picture_frames[i].contract_address + "/" + responseData.picture_frames[i].token_id, {
+            style: PictureFrameStyle[String(responseData.picture_frames[i].frame)],
+            color: Color3.FromInts(responseData.picture_frames[i].color_rgb[0], responseData.picture_frames[i].color_rgb[1], responseData.picture_frames[i].color_rgb[2]),
+          }),
           // Position artwork
           new Transform({
             position: new Vector3(
-              responseData.results[i].transform.position.x,
-              responseData.results[i].transform.position.y,
-              responseData.results[i].transform.position.z
+              responseData.picture_frames[i].transform.position.x,
+              responseData.picture_frames[i].transform.position.y,
+              responseData.picture_frames[i].transform.position.z
             ),
             rotation: Quaternion.Euler(
-              responseData.results[i].transform.rotation.x,
-              responseData.results[i].transform.rotation.y,
-              responseData.results[i].transform.rotation.z
+              responseData.picture_frames[i].transform.rotation.x,
+              responseData.picture_frames[i].transform.rotation.y,
+              responseData.picture_frames[i].transform.rotation.z
             ),
-            scale: new Vector3(
-              responseData.results[i].transform.scale.x,
-              responseData.results[i].transform.scale.y,
-              responseData.results[i].transform.scale.z
-            ),
+            scale: new Vector3(responseData.picture_frames[i].transform.scale.x, responseData.picture_frames[i].transform.scale.y, responseData.picture_frames[i].transform.scale.z),
           })
         )
         // Add link to opensea
         picture.addComponent(
           new OnPointerDown(
             () => {
-              openNFTDialog(
-                'ethereum://' + responseData.results[i].contract_address + '/' + responseData.results[i].token_id, responseData.results[i].comment 
-              )
+              openNFTDialog("ethereum://" + responseData.picture_frames[i].contract_address + "/" + responseData.picture_frames[i].token_id, responseData.results[i].comment)
               sound.getComponent(AudioSource).playOnce()
             },
             {
               button: ActionButton.ANY,
               showFeedback: true,
-              hoverText: 'More Info',
-              distance: 12
+              hoverText: "More Info",
+              distance: 12,
             }
           )
         )
@@ -103,10 +90,10 @@ export async function loadPictures(scene: Entity) {
         picture.setParent(scene)
       }
     } else {
-      log('Request failed')
+      log("Request failed")
     }
   } catch (error) {
-    log('FAILED')
+    log("FAILED")
     log(error.toString())
   }
 }
