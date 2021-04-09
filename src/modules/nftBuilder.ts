@@ -1,5 +1,6 @@
 import { NFT } from "./nft"
 import resources from "../resources"
+import { data } from "../data"
 
 // Sound
 const sound = new Entity()
@@ -34,66 +35,38 @@ enum PictureFrameStyle {
   Canvas,
 }
 
-/// --- CMS ---
-export async function loadPictures(scene: Entity) {
-  try {
-    // Grab data from https://dclcms.club
-    let targetUrl = "https://dclcms.club/api/pictureframes_video?format=json&gallery=cvag"
-    // let response = await fetch(proxyUrl + targetUrl)
-    let response = await fetch(targetUrl)
-    let responseData = await response.json()
+// Number of objects in the json file
+let count = Object.keys(data).length
 
-    // Number of objects in JSON
-    let count = Object.keys(responseData.picture_frames).length
+// Load pictures
+export function loadPictures(parent: Entity): void {
+  for (let i = 0; i < count; i++) {
+    const picture = new NFT(
+      new NFTShape("ethereum://" + data[i].contract_address + "/" + data[i].token_id, {
+        style: PictureFrameStyle[String(data[i].frame)],
+        color: Color3.FromHexString(data[i].color),
+      }),
+      new Transform({
+        position: new Vector3(+data[i].position_x, +data[i].position_y, +data[i].position_z),
+        rotation: Quaternion.Euler(+data[i].rotation_x, +data[i].rotation_y, +data[i].rotation_z),
+        scale: new Vector3(+data[i].scale_x, +data[i].scale_y, +data[i].scale_z),
+      })
+    )
 
-    if (responseData.picture_frames) {
-      log("Request success")
-      log("Count: ", count)
-      for (let i = 0; i <= count; i++) {
-        // Creating picture frame v2
-        const picture = new NFT(
-          new NFTShape("ethereum://" + responseData.picture_frames[i].contract_address + "/" + responseData.picture_frames[i].token_id, {
-            style: PictureFrameStyle[String(responseData.picture_frames[i].frame)],
-            color: Color3.FromInts(responseData.picture_frames[i].color_rgb[0], responseData.picture_frames[i].color_rgb[1], responseData.picture_frames[i].color_rgb[2]),
-          }),
-          // Position artwork
-          new Transform({
-            position: new Vector3(
-              responseData.picture_frames[i].transform.position.x,
-              responseData.picture_frames[i].transform.position.y,
-              responseData.picture_frames[i].transform.position.z
-            ),
-            rotation: Quaternion.Euler(
-              responseData.picture_frames[i].transform.rotation.x,
-              responseData.picture_frames[i].transform.rotation.y,
-              responseData.picture_frames[i].transform.rotation.z
-            ),
-            scale: new Vector3(responseData.picture_frames[i].transform.scale.x, responseData.picture_frames[i].transform.scale.y, responseData.picture_frames[i].transform.scale.z),
-          })
-        )
-        // Add link to opensea
-        picture.addComponent(
-          new OnPointerDown(
-            () => {
-              openNFTDialog("ethereum://" + responseData.picture_frames[i].contract_address + "/" + responseData.picture_frames[i].token_id, responseData.results[i].comment)
-              sound.getComponent(AudioSource).playOnce()
-            },
-            {
-              button: ActionButton.ANY,
-              showFeedback: true,
-              hoverText: "More Info",
-              distance: 12,
-            }
-          )
-        )
-
-        picture.setParent(scene)
-      }
-    } else {
-      log("Request failed")
-    }
-  } catch (error) {
-    log("FAILED")
-    log(error.toString())
+    picture.addComponent(
+      new OnPointerDown(
+        () => {
+          openNFTDialog("ethereum://" + data[i].contract_address + "/" + data[i].token_id)
+          sound.getComponent(AudioSource).playOnce()
+        },
+        {
+          button: ActionButton.PRIMARY,
+          showFeedback: true,
+          hoverText: "More Info",
+        }
+      )
+    )
+    picture.setParent(parent)
   }
 }
+
