@@ -21,12 +21,47 @@ liquidFloorInverse.addComponent(new GLTFShape('models/LiquidFloor.glb'))
 //engine.addEntity(liquidFloorInverse)
 
 //NFTs
-
 const polaroid = new Entity()
 polaroid.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
 polaroid.setParent(building)
 polaroid.addComponent(new Transform({position: new Vector3(78.97,4.8,25.34)}))
 engine.addEntity(polaroid)//(0,6.38,6.33)
+
+const oneSatoshi = new Entity()
+oneSatoshi.addComponent(new GLTFShape('models/Satoshi_NFT.glb'))
+oneSatoshi.setParent(building)
+oneSatoshi.addComponent(new Transform({position: new Vector3(103.7,3.9,19)}))
+engine.addEntity(oneSatoshi)
+
+const girl2021 = new Entity()
+girl2021.addComponent(new GLTFShape('models/2021_NFT.glb'))
+girl2021.setParent(building)
+girl2021.addComponent(new Transform({position: new Vector3(109,4.1,33.73)}))
+engine.addEntity(girl2021)
+
+const beach = new Entity()
+beach.addComponent(new GLTFShape('models/Beach_NFT.glb'))
+beach.setParent(building)
+beach.addComponent(new Transform({position: new Vector3(99.67,4.1,33.73)}))
+engine.addEntity(beach)
+
+const mosaic = new Entity()
+mosaic.addComponent(new GLTFShape('models/Mosaic_NFT.glb'))
+mosaic.setParent(building)
+mosaic.addComponent(new Transform({position: new Vector3(102,4.1,4.16)}))
+engine.addEntity(mosaic)
+
+const puzzled = new Entity()
+puzzled.addComponent(new GLTFShape('models/Puzzled_NFT.glb'))
+puzzled.setParent(building)
+puzzled.addComponent(new Transform({position: new Vector3(55.43, 4.1, 4.16)}))
+engine.addEntity(puzzled)
+
+const redacted = new Entity()
+redacted.addComponent(new GLTFShape('models/Redacted_NFT.glb'))
+redacted.setParent(building)
+redacted.addComponent(new Transform({position: new Vector3(52.987,4.1,33.73)}))
+engine.addEntity(redacted)
 
 //Slime test 
 const pinkSlime = new GLTFShape('models/Slime_01.glb')
