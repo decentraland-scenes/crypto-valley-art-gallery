@@ -42,42 +42,63 @@ polaroid.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
 polaroid.setParent(building)
 polaroid.addComponent(new Transform({position: new Vector3(78.97,5.1,25.34), scale: new Vector3(1.2,1.2,1.2)}))
 engine.addEntity(polaroid)
+polaroid.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 const oneSatoshi = new Entity()
 oneSatoshi.addComponent(new GLTFShape('models/Satoshi_NFT.glb'))
 oneSatoshi.setParent(building)
 oneSatoshi.addComponent(new Transform({position: new Vector3(103.7,3.9,19)}))
 engine.addEntity(oneSatoshi)
+oneSatoshi.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 const girl2021 = new Entity()
 girl2021.addComponent(new GLTFShape('models/2021_NFT.glb'))
 girl2021.setParent(building)
 girl2021.addComponent(new Transform({position: new Vector3(109,4.1,33.73)}))
 engine.addEntity(girl2021)
+girl2021.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 const beach = new Entity()
 beach.addComponent(new GLTFShape('models/Beach_NFT.glb'))
 beach.setParent(building)
 beach.addComponent(new Transform({position: new Vector3(99.67,4.1,33.73)}))
 engine.addEntity(beach)
+beach.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 const mosaic = new Entity()
 mosaic.addComponent(new GLTFShape('models/Mosaic_NFT.glb'))
 mosaic.setParent(building)
 mosaic.addComponent(new Transform({position: new Vector3(103.2,4.1,4.16)}))
 engine.addEntity(mosaic)
+mosaic.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 const puzzled = new Entity()
 puzzled.addComponent(new GLTFShape('models/Puzzled_NFT.glb'))
 puzzled.setParent(building)
 puzzled.addComponent(new Transform({position: new Vector3(55.43, 4.1, 4.16)}))
 engine.addEntity(puzzled)
+puzzled.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 const redacted = new Entity()
 redacted.addComponent(new GLTFShape('models/Redacted_NFT.glb'))
 redacted.setParent(building)
 redacted.addComponent(new Transform({position: new Vector3(52.987,4.1,33.73)}))
 engine.addEntity(redacted)
+redacted.addComponentOrReplace(new OnPointerDown(()=>{
+  getPopup("nft1")
+}))
 
 //Slime test 
 const pinkSlime = new GLTFShape('models/Slime_01.glb')
@@ -241,3 +262,224 @@ engine.addEntity(streamSource)
 
 // Pictures
 //loadPictures(building)
+
+
+
+// Music
+/*
+const streamSource = new Entity()
+streamSource.addComponent(
+  new AudioStream("https://streaming.radionomy.com/JamendoLounge")
+)
+streamSource.getComponent(AudioStream).volume = 0.075
+engine.addEntity(streamSource)
+*/
+
+
+// Pictures
+//loadPictures(building)
+
+
+// Playboy
+import * as utils from '@dcl/ecs-scene-utils'
+import * as ui from '@dcl/ui-scene-utils'
+import slimenft from './modules/slimenft'
+var sceneMessageBus = new MessageBus()
+sceneMessageBus.on('activatePoap', () => {
+  POAPBooth.activate()
+})
+
+export class Dispenser extends Entity {
+  idleAnim = new AnimationState('Idle_POAP', { looping: true })
+  buyAnim = new AnimationState('Action_POAP', { looping: false })
+  buttonAnim = new AnimationState('Button_Action', { looping: false })
+  eventName: string
+  constructor(transform: TranformConstructorArgs, eventName: string) {
+    super()
+    engine.addEntity(this)
+
+    this.addComponent(new GLTFShape('models/POAP_dispenser.glb'))
+    this.addComponent(new Transform(transform))
+
+    this.addComponent(new Animator())
+    this.getComponent(Animator).addClip(this.idleAnim)
+    this.getComponent(Animator).addClip(this.buyAnim)
+    this.idleAnim.play()
+
+    this.eventName = eventName
+
+    let button = new Entity()
+    button.addComponent(new GLTFShape('models/POAP_button.glb'))
+    button.addComponent(new Animator())
+    button.getComponent(Animator).addClip(this.buttonAnim)
+    button.setParent(this)
+    button.addComponent(
+      new OnPointerDown(
+        (e) => {
+          button.getComponent(Animator).getClip('Action').stop()
+          button.getComponent(Animator).getClip('Action').play()
+          sceneMessageBus.emit('activatePoap', {})
+          //handlePoap(eventName)
+        },
+        { hoverText: 'Get Attendance Token' }
+      )
+    )
+    engine.addEntity(button)
+  }
+
+  public activate(): void {
+    let anim = this.getComponent(Animator)
+
+    anim.getClip('Idle_POAP').stop()
+    anim.getClip('Action_POAP').stop()
+
+    anim.getClip('Action_POAP').play()
+
+    this.addComponentOrReplace(
+      new utils.Delay(4000, () => {
+        anim.getClip('Action_POAP').stop()
+
+        anim.getClip('Idle_POAP').play()
+      })
+    )
+  }
+}
+
+let POAPBooth = new Dispenser(
+  {
+    position: new Vector3(115, 0, 10),
+    rotation:Quaternion.Euler(0,-90,0),
+    scale: Vector3.One()
+  },
+  'playboy'
+)
+
+let POAPBanner = new Entity()
+POAPBanner.addComponent(
+  new Transform({
+    position: new Vector3(65, 0, 8),
+    rotation:Quaternion.Euler(0,-45,0),
+    scale: Vector3.One()
+  })
+)
+POAPBanner.addComponent(new GLTFShape('models/POAP_Banner.glb'))
+engine.addEntity(POAPBanner)
+
+/*
+var screen = new Entity()
+screen.addComponent(new PlaneShape())
+screen.addComponent(new Material())
+screen.getComponent(Material).albedoColor = Color4.Black()
+screen.addComponent(new Transform({
+  position: new Vector3(50,9,20),
+  rotation: Quaternion.Euler(0,90,0),
+  scale: new Vector3(12,6.75,1)
+}))
+engine.addEntity(screen)
+*/
+
+
+var nft = {}
+var popup = new ui.CustomPrompt(ui.PromptStyles.LIGHTLARGE,500,400,true)
+popup.addText("NFT TITLE", 0, 185,Color4.Black(), 25)
+popup.addText("NFT Creator", 0, 150,Color4.Black(), 20)
+popup.addText("NFT Description", 0, 120,Color4.Black(), 10)
+popup.addButton("Close", -150,-150,()=>{
+  popup.hide()
+},ui.ButtonStyles.ROUNDBLACK)
+popup.addButton("NiftyGateway", 150,-150,()=>{
+  openExternalURL(getCurrentNFT())
+},ui.ButtonStyles.RED)
+
+function getCurrentNFT(){
+  return nft.link
+}
+function getPopup(name:string){
+  nft = slimenft[name]
+  popup.show()
+  popup.elements[0].text.value = slimenft[name].title
+  popup.elements[1].text.value = "Creator: " + slimenft[name].creator
+}
+
+async function getBid(){
+
+  let params = {
+    contractAddress: "0xf91b673aaf37242257618bf8b467d20adcea13ce",
+    current:1,
+    size:10,
+    tokenId: "5900060040"
+  }
+
+  let url ="https://lkdcl.co/fent/logic/getnifty"
+  let response = await fetch(url,
+      {headers: { "Content-Type": "application/json" },
+        method: "POST",
+      body:JSON.stringify(params)})
+  let json = await response.json()
+  log(json)
+  var results = json.message.data.results
+  for(var i = 0; i < results.length; i++){
+    var date = new Date(results[i].Timestamp)
+    log(date)
+    if(results[i].Type == 'offer'){
+      log('we have a bid')
+      log('offer amount: $' + (results[i].OfferAmountInCents / 100))
+    }
+  }
+}
+getBid()
+
+
+var bidInterval = new Entity()
+bidInterval.addComponent(new utils.Interval(10000,()=>{
+log('getting bid')
+}))
+//engine.addEntity(bidInterval)
+
+
+var bidText = new Entity()
+bidText.addComponent(new TextShape("Highest Bidder"))
+bidText.addComponent(new Transform({
+  position: new Vector3(103.7, 4, 16),
+  rotation: Quaternion.Euler(0,90,0)
+}))
+bidText.getComponent(TextShape).fontSize = 2
+bidText.getComponent(TextShape).hTextAlign = "left"
+bidText.getComponent(TextShape).color = Color3.Black()
+bidText.getComponent(TextShape).value = "Highest Bidder\nAldo: $190\nLastraum: $150"
+engine.addEntity(bidText)
+
+
+ var startedVideo = false
+const canvas = new UICanvas()
+const image = new UIImage(canvas, new Texture("images/playboy.png"))
+image.sourceLeft = 0 
+image.sourceTop = 0
+image.sourceWidth = 150
+image.sourceHeight = 150
+image.height = 150
+image.width = 150
+image.vAlign = "bottom"
+image.hAlign = "center"
+image.onClick = new OnClick((e)=>{
+  log('eys')
+  clipHidden.playing = false
+  clipHidden.looping = false
+  clipShow.looping = false
+  clipShow.play()
+  image.visible = false
+  startedVideo = true
+})
+image.visible = false
+
+export class avapos{
+  update(){
+    log(Camera.instance.position)
+    if(Camera.instance.position.x < 75){
+      image.visible = true
+      engine.removeSystem(ava)
+    }
+  }
+}
+var ava  = new avapos()
+engine.addSystem(ava)
