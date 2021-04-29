@@ -15,17 +15,33 @@ liquidFloor.addComponent(new Transform({position: new Vector3(0,0.02,0)}))
 liquidFloor.addComponent(new GLTFShape('models/LiquidFloor.glb'))
 engine.addEntity(liquidFloor)
 
-const liquidFloorInverse = new Entity()
-liquidFloorInverse.addComponent(new Transform({position: new Vector3(130,0,61), rotation: Quaternion.Euler(0,180,0)}))
-liquidFloorInverse.addComponent(new GLTFShape('models/LiquidFloor.glb'))
-//engine.addEntity(liquidFloorInverse)
+//Screen
+
+const screenHolder = new Entity
+screenHolder.setParent(building)
+screenHolder.addComponent(new Transform({position: new Vector3(48,12,21)}))
+screenHolder.addComponent(new GLTFShape('models/ScreenHolder.glb'))
+let animator = new Animator()
+screenHolder.addComponent(animator)
+let clipShow = new AnimationState('Show')
+let clipHide = new AnimationState('Hide')
+let clipStatic = new AnimationState('Static')
+let clipHidden = new AnimationState('Hidden')
+animator.addClip(clipShow)
+animator.addClip(clipHide)
+animator.addClip(clipStatic)
+animator.addClip(clipHidden)
+clipHidden.play()
+clipHidden.looping = true 
+engine.addEntity(screenHolder)
+
 
 //NFTs
 const polaroid = new Entity()
 polaroid.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
 polaroid.setParent(building)
-polaroid.addComponent(new Transform({position: new Vector3(78.97,4.8,25.34)}))
-engine.addEntity(polaroid)//(0,6.38,6.33)
+polaroid.addComponent(new Transform({position: new Vector3(78.97,5.1,25.34), scale: new Vector3(1.2,1.2,1.2)}))
+engine.addEntity(polaroid)
 
 const oneSatoshi = new Entity()
 oneSatoshi.addComponent(new GLTFShape('models/Satoshi_NFT.glb'))
@@ -48,7 +64,7 @@ engine.addEntity(beach)
 const mosaic = new Entity()
 mosaic.addComponent(new GLTFShape('models/Mosaic_NFT.glb'))
 mosaic.setParent(building)
-mosaic.addComponent(new Transform({position: new Vector3(102,4.1,4.16)}))
+mosaic.addComponent(new Transform({position: new Vector3(103.2,4.1,4.16)}))
 engine.addEntity(mosaic)
 
 const puzzled = new Entity()
@@ -224,4 +240,4 @@ streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
 
 // Pictures
-loadPictures(building)
+//loadPictures(building)
