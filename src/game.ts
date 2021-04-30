@@ -1,4 +1,6 @@
 import resources from "./resources"
+import * as utils from '@dcl/ecs-scene-utils'
+import * as ui from '@dcl/ui-scene-utils'
 //import { loadPictures } from "./modules/nftBuilder"
 
 const building = new Entity()
@@ -35,70 +37,180 @@ clipHidden.play()
 clipHidden.looping = true 
 engine.addEntity(screenHolder)
 
+let names:any[] = ["one", "twentyOne", "puzzled", "redacted", "liquid","mosaic"]
+let counter = 0
 
 //NFTs
-const polaroid = new Entity()
-polaroid.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
-polaroid.setParent(building)
-polaroid.addComponent(new Transform({position: new Vector3(78.97,5.1,25.34), scale: new Vector3(1.2,1.2,1.2)}))
-engine.addEntity(polaroid)
-polaroid.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
+/*
+for(var key in slimenft){
+   const nft = new Entity()
+   log(names[counter])
+   nft.addComponent(slimenft[key].nft)
+   nft.addComponent(slimenft[key].transform)
+   nft.addComponent(new OnPointerDown(()=>{
+     getPopup(currentNFT)
+   }))
+  nft.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(5,4,3),slimenft[key].triggerPos),
+  {
+    onCameraEnter: ()=>{
+      currentNFT = key
+      hovertext.visible = true
+    },
+    onCameraExit: ()=>{
+      hovertext.visible = false
+  },
+    enableDebug: true
+  }))
+  nft.setParent(building)
+  counter++
+}
+*/
 
-const oneSatoshi = new Entity()
-oneSatoshi.addComponent(new GLTFShape('models/Satoshi_NFT.glb'))
-oneSatoshi.setParent(building)
-oneSatoshi.addComponent(new Transform({position: new Vector3(103.7,3.9,19)}))
-engine.addEntity(oneSatoshi)
-oneSatoshi.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
+export class SlimeNFT extends Entity {
 
-const girl2021 = new Entity()
-girl2021.addComponent(new GLTFShape('models/2021_NFT.glb'))
-girl2021.setParent(building)
-girl2021.addComponent(new Transform({position: new Vector3(109,4.1,33.73)}))
-engine.addEntity(girl2021)
-girl2021.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
+    data:any = {
+        one:{
+        link:"http://www.google.com",
+        image:"images/one.png",
+        address:"",
+        tokenId:"",
+        title:"One Satoshi",
+        description:"Introducing the first digital PLAYBOY cover ever to be sold. Satoshi might be considered the King of Crypto, but he was preceded by the First Lady of the Internet. Playmate Lenna Sjööblom, the star of this April 1973 cover—and now Playboy’s first NFT cover—first appeared in the pages of PLAYBOY in an iconic 1972 pictorial photographed by Dwight Hooker. Lenna made such a big impression that her Centerfold image was adopted by researchers at the University of Southern California as a test photo that helped lay the foundations of JPEG and MPEG file formats, which later became the de facto standards of sharing images and videos online. Just like Satoshi’s fingerprints are on every blockchain transaction, every image on the internet can be traced back to Lenna’s image in PLAYBOY. “Forget breaking the internet,” PLAYBOY editors later recounted. 'Lenna helped make it.'\n\nHidden Rabbit Head Clue\nWhen it comes to making a lasting impression, our Rabbit doesn’t need anyone’s stamp of approval; he always nails it.\n\nOriginal Credits\nApril 1973 cover featuring November 1972 Playmate Lenna Sjööblom, photographed by Don Azuma.",
+        nft:new GLTFShape('models/Satoshi_NFT.glb'),
+        transform:new Transform({position: new Vector3(103.68,3.9,19)}),
+        triggerPos:new Vector3(-4,-2,0),
+    },
+    twentyOne:{
+        link:"",
+        image:"images/twentyOne.png",
+        address:"",
+        tokenId:"",
+        title:"2021 —> 1861",
+        description:"It can be a challenge to comprehend NFTs in 2021, so imagine how the concept would have been received in 1861. In addition to the direct connection to the Liquid Summer theme courtesy of Domenico Morelli’s dreamy 1861 bathing beauties, fused with a poolside image of 2015 Playmate Monica Sims, 2021 —> 1861  is a multi-era mashup that speaks to the fluidity of time, the liquidity of crypto, and the sometimes unbelievable evolution of technology itself.",
+        nft:new GLTFShape('models/2021_NFT.glb'),
+        transform:new Transform({position: new Vector3(109,4.1,33.73)}),
+        triggerPos:new Vector3(0,-2,-4)
+    },
+    puzzled:{
+        link:"",
+        image:"images/puzzled.png",
+        address:"",
+        tokenId:"",
+        title:"Puzzled",
+        description:"Clever cut-outs and puzzle-themed imagery, often born from the imagination of founding art director and Rabbit Head logo creator Arthur Paul, have made recurring appearances within the pages of PLAYBOY magazine and on some of its most iconic covers--some of which have been transformed into actual puzzles that have given readers a special way to take the Rabbit home. Slimesunday gives a digital nod to the tradition with this cheeky adaptation of an image from a 2000 pictorial shot in Fiji.\n\nHidden Rabbit Head Clue\nOur Rabbit is no beach bum; he knows that without a strong backbone, beauty is only skin deep.\n\nOriginal Credits\nAugust 1997 Playmate Kalin Olson, April 1997 Playmate Kelly Marie Monaco and January 1996 Playmate Victoria Fuller, photographed by Richard Fegley",
+        nft:new GLTFShape('models/Puzzled_NFT.glb'),
+        transform:new Transform({position: new Vector3(55.43, 4.1, 4.16)}),
+        triggerPos:new Vector3(0,-2,4)
+    },
+    redacted:{
+        link:"",
+        image:"images/redacted.png",
+        address:"",
+        tokenId:"",
+        title:"Redacted",
+        description:"Redacted marries two classic Playboy themes that are as relevant today as they were at the brand’s inception: fine art and freedom-of-speech. Redacted pays its respects to these key components of Playboy’s DNA through collage material that features an article about a Reagan-era attempt to censor PLAYBOY, layered atop contemporary photography and illustration.\n\nHidden Rabbit Head Clue\nWhen it comes to standing up for free speech, our Rabbit firmly believ   es you should raise your fist and hodl on tight to your convictions.\n\nOriginal Credits\nApril 2018 Playmate Nereyda Bird photographed by Wiissa for the pictorial “Bird of Paradise.” Collage material from “Defying the Anti-Porn Police” by James R. Petersen, illustrated by Rob Stites.",
+        nft:new GLTFShape('models/Redacted_NFT.glb'),
+        transform:new Transform({position: new Vector3(52.987,4.1,33.73)}),
+        triggerPos:new Vector3(0,-2,-4)
+    },
+    liquid:{
+        link:"",
+        image:"images/liquid.png",
+        address:"",
+        tokenId:"",
+        title:"Liquid Summer",
+        description:"March 2019 Playmate Miki Hamano and photographer Ana Dias are recurring Playboy contributors who embody the spirit of the brand on both creative and personal levels, so it's fitting that an image from their pictorial serves as the primary source material for the collection’s eponymous work. Both exude a level of confidence that only comes from being comfortable in their own skin. As a result, they light up every room, or in this case--every classic Playboy beach shoot--that they visit.\n\nHidden Rabbit Head Clue\nWhether daring to dive into deep waters or lounging luxuriously on the beach, our Rabbit isn’t afraid to make a repeat appearance.\n\nOriginal Credits\nMarch 2019 Playmate Miki Hamano photographed by Ana Dias",
+        nft:new GLTFShape('models/Beach_NFT.glb'),
+        transform:new Transform({position: new Vector3(99.67,4.1,33.73)}),
+        triggerPos:new Vector3(0,-2,-6)
+    },
+    mosaic:{
+        link:"",
+        image:"images/mosaic.png",
+        address:"",
+        tokenId:"",
+        title:"Mosaic",
+        description:"Mosaic was one of the first pieces Slimesunday created for Liquid Summer, and it quickly cemented some of the key creative and conceptual throughlines that ripple throughout the collection: censorship, transformation, and a thoughtful balance between style and substance. Although pixelation is usually associated with censorship, Mosaic challenges that preconception by fusing it with collage, and transforming the original photograph into a different version of itself.\n\nHidden Rabbit Head Clue\nOur Rabbit can always take the heat, but knows that cooling off can be just as sweet.\n\nOriginal Credits\nApril 2018 Playmate Nereyda Bird photographed by Wiissa",
+        nft:new GLTFShape('models/Mosaic_NFT.glb'),
+        transform:new Transform({position: new Vector3(103.2,4.1,4.16)}),
+        triggerPos:new Vector3(0,-2,3)
+    }
+    }
 
+    name:string
+    popup:ui.CustomPrompt
+    
+
+    constructor(name:any, parent:Entity){
+        super()
+        this.name = name
+        this.setParent(parent)
+        log(name)
+        this.addComponent(this.data[name].nft)
+        this.addComponent(this.data[name].transform)
+        
+        this.addComponent(new OnPointerDown(()=>{
+          this.showPopup(this.data[name])
+        }))
+        /*
+        this.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(5,4,3),this.data[name].triggerPos),
+       {
+         onCameraEnter: ()=>{
+           hovertext.visible = true
+         },
+         onCameraExit: ()=>{
+           hovertext.visible = false
+       },
+         enableDebug: true
+       }))
+       */
+
+        this.popup = new ui.CustomPrompt(ui.PromptStyles.LIGHTLARGE,500,400,true)
+        this.popup.addText("", 100, 185,Color4.Black(), 25)
+        this.popup.addIcon(this.data[name].image, -150,50,200,200,{
+          sourceHeight:1024,
+          sourceWidth:1024,
+          sourceLeft:0,
+          sourceTop:0
+        })
+        this.popup.addButton("Close", -150,-150,()=>{
+            this.popup.hide()
+            descriptionText.visible = false
+        },ui.ButtonStyles.ROUNDBLACK)
+        this.popup.addButton("NiftyGateway", 150,-150,()=>{
+            log('ok')
+        openExternalURL(this.data[name].link)
+        },ui.ButtonStyles.RED)       
+    }
+
+    showPopup(name:any){
+        this.popup.show()
+        this.popup.elements[0].text.value = name.title
+        descriptionText.value = name.description
+        descriptionText.visible = true
+    }
+}
+
+new SlimeNFT("one", building)
+new SlimeNFT("liquid", building)
+new SlimeNFT("mosaic", building)
+new SlimeNFT("redacted", building)
+new SlimeNFT("puzzled", building)
+new SlimeNFT("twentyOne", building)
+
+const liquidlogo = new Entity()
+liquidlogo.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
+liquidlogo.setParent(building)
+liquidlogo.addComponent(new Transform({position: new Vector3(78.97,5.1,25.34), scale: new Vector3(1.2,1.2,1.2)}))
+engine.addEntity(liquidlogo)
+
+/*
 const beach = new Entity()
 beach.addComponent(new GLTFShape('models/Beach_NFT.glb'))
 beach.setParent(building)
 beach.addComponent(new Transform({position: new Vector3(99.67,4.1,33.73)}))
 engine.addEntity(beach)
-beach.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
-
-const mosaic = new Entity()
-mosaic.addComponent(new GLTFShape('models/Mosaic_NFT.glb'))
-mosaic.setParent(building)
-mosaic.addComponent(new Transform({position: new Vector3(103.2,4.1,4.16)}))
-engine.addEntity(mosaic)
-mosaic.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
-
-const puzzled = new Entity()
-puzzled.addComponent(new GLTFShape('models/Puzzled_NFT.glb'))
-puzzled.setParent(building)
-puzzled.addComponent(new Transform({position: new Vector3(55.43, 4.1, 4.16)}))
-engine.addEntity(puzzled)
-puzzled.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
-
-const redacted = new Entity()
-redacted.addComponent(new GLTFShape('models/Redacted_NFT.glb'))
-redacted.setParent(building)
-redacted.addComponent(new Transform({position: new Vector3(52.987,4.1,33.73)}))
-engine.addEntity(redacted)
-redacted.addComponentOrReplace(new OnPointerDown(()=>{
-  getPopup("nft1")
-}))
+*/
 
 //Slime test 
 const pinkSlime = new GLTFShape('models/Slime_01.glb')
@@ -260,30 +372,6 @@ streamSource.addComponent(
 streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
 
-// Pictures
-//loadPictures(building)
-
-
-
-// Music
-/*
-const streamSource = new Entity()
-streamSource.addComponent(
-  new AudioStream("https://streaming.radionomy.com/JamendoLounge")
-)
-streamSource.getComponent(AudioStream).volume = 0.075
-engine.addEntity(streamSource)
-*/
-
-
-// Pictures
-//loadPictures(building)
-
-
-// Playboy
-import * as utils from '@dcl/ecs-scene-utils'
-import * as ui from '@dcl/ui-scene-utils'
-import slimenft from './modules/slimenft'
 var sceneMessageBus = new MessageBus()
 sceneMessageBus.on('activatePoap', () => {
   POAPBooth.activate()
@@ -378,29 +466,6 @@ screen.addComponent(new Transform({
 engine.addEntity(screen)
 */
 
-
-var nft = {}
-var popup = new ui.CustomPrompt(ui.PromptStyles.LIGHTLARGE,500,400,true)
-popup.addText("NFT TITLE", 0, 185,Color4.Black(), 25)
-popup.addText("NFT Creator", 0, 150,Color4.Black(), 20)
-popup.addText("NFT Description", 0, 120,Color4.Black(), 10)
-popup.addButton("Close", -150,-150,()=>{
-  popup.hide()
-},ui.ButtonStyles.ROUNDBLACK)
-popup.addButton("NiftyGateway", 150,-150,()=>{
-  openExternalURL(getCurrentNFT())
-},ui.ButtonStyles.RED)
-
-function getCurrentNFT(){
-  return nft.link
-}
-function getPopup(name:string){
-  nft = slimenft[name]
-  popup.show()
-  popup.elements[0].text.value = slimenft[name].title
-  popup.elements[1].text.value = "Creator: " + slimenft[name].creator
-}
-
 async function getBid(){
 
   let params = {
@@ -437,6 +502,7 @@ log('getting bid')
 //engine.addEntity(bidInterval)
 
 
+/*
 var bidText = new Entity()
 bidText.addComponent(new TextShape("Highest Bidder"))
 bidText.addComponent(new Transform({
@@ -448,36 +514,49 @@ bidText.getComponent(TextShape).hTextAlign = "left"
 bidText.getComponent(TextShape).color = Color3.Black()
 bidText.getComponent(TextShape).value = "Highest Bidder\nAldo: $190\nLastraum: $150"
 engine.addEntity(bidText)
+*/
 
-
- var startedVideo = false
 const canvas = new UICanvas()
-const image = new UIImage(canvas, new Texture("images/playboy.png"))
-image.sourceLeft = 0 
-image.sourceTop = 0
-image.sourceWidth = 150
-image.sourceHeight = 150
-image.height = 150
-image.width = 150
-image.vAlign = "bottom"
-image.hAlign = "center"
-image.onClick = new OnClick((e)=>{
-  log('eys')
+export var descriptionText = new UIText(canvas)
+descriptionText.height = 25
+descriptionText.value = ""
+descriptionText.width = 275
+descriptionText.textWrapping = true
+descriptionText.fontSize = 9
+descriptionText.positionY = 140
+descriptionText.positionX = 100
+descriptionText.color = Color4.Black()
+descriptionText.vTextAlign = 'top'
+descriptionText.vAlign = "center"
+descriptionText.hAlign = "center"
+descriptionText.visible = true
+
+const playvideo = new UIImage(canvas, new Texture("images/PlayVideo.png"))
+playvideo.sourceLeft = 0 
+playvideo.sourceTop = 0
+playvideo.sourceWidth = 512
+playvideo.sourceHeight = 512
+playvideo.height = 100
+playvideo.width = 100
+playvideo.vAlign = "bottom"
+playvideo.hAlign = "center"
+playvideo.onClick = new OnClick((e)=>{
   clipHidden.playing = false
   clipHidden.looping = false
   clipShow.looping = false
   clipShow.play()
-  image.visible = false
-  startedVideo = true
+  playvideo.visible = false
+  engine.removeSystem(ava)
 })
-image.visible = false
+playvideo.visible = false
 
 export class avapos{
   update(){
-    log(Camera.instance.position)
-    if(Camera.instance.position.x < 75){
-      image.visible = true
-      engine.removeSystem(ava)
+    if(Camera.instance.position.x < 75 && Camera.instance.position.x > 45 && Camera.instance.position.z > 12 &&  Camera.instance.position.z < 23){
+      playvideo.visible = true
+    }
+    else{
+      playvideo.visible = false
     }
   }
 }
