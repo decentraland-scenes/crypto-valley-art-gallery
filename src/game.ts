@@ -362,7 +362,7 @@ POAPBanner.addComponent(
     scale: Vector3.One()
   })
 )
-POAPBanner.addComponent(new GLTFShape('models/POAP_Banner.glb'))
+POAPBanner.addComponent(new GLTFShape('models/Audio_Banner.glb'))
 engine.addEntity(POAPBanner)
 
 /*
