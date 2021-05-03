@@ -396,23 +396,15 @@ export class Dispenser extends Entity {
   }
 }
 
-let POAPBooth = new Dispenser(
-  {
-    position: new Vector3(115, 0, 10),
-    rotation:Quaternion.Euler(0,-90,0),
-    scale: Vector3.One()
-  },
-  'playboy'
-)
+let POAPBooth = new Dispenser({position: new Vector3(115, 0, 10),rotation:Quaternion.Euler(0,-90,0), scale: Vector3.One()},'playboy')
 
 let POAPBanner = new Entity()
-POAPBanner.addComponent(
-  new Transform({
-    position: new Vector3(65, 0, 8),
-    rotation:Quaternion.Euler(0,-45,0),
+POAPBanner.addComponent(new Transform({
+    position: new Vector3(93, 0, 6),
+    rotation:Quaternion.Euler(0,45,0),
     scale: Vector3.One()
-  })
-)
+  }))
+
 POAPBanner.addComponent(new GLTFShape('models/Audio_Banner.glb'))
 engine.addEntity(POAPBanner)
 POAPBanner.addComponentOrReplace(new OnPointerDown(()=>{
@@ -420,8 +412,9 @@ POAPBanner.addComponentOrReplace(new OnPointerDown(()=>{
   firesidechat.playing = true
   firesidechat.volume = .7
   firesidePlaying = true
+  toggleFireside.visible = true
 }))
-POAPBanner.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(2,4,3),new Vector3(-1.5,0,1.5)),
+POAPBanner.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(2,4,3),new Vector3(1.5,0,1.5)),
 {
   onCameraEnter: ()=>{
     !firesidePlaying?  hoverText.visible = true : null
@@ -446,7 +439,7 @@ audioCube.addComponent(new Transform({
 engine.addEntity(audioCube)
 audioCube.setParent(Attachable.AVATAR)
 
-
+var blauTexture = new VideoTexture(new VideoClip("https://vod.dcl.guru/2021-01-23-3LAUAfterparty-F.mp4"))
 var screen = new Entity()
 screen.addComponent(new PlaneShape())
 screen.addComponent(new Material())
@@ -457,6 +450,9 @@ screen.addComponent(new Transform({
   scale: Vector3.Zero()
 }))
 engine.addEntity(screen)
+screen.addComponentOrReplace(new OnPointerDown(()=>{
+  blauTexture.playing = !blauTexture.playing
+}))
 
 
 async function getBid(){
@@ -536,6 +532,47 @@ hoverText.vAlign = "bottom"
 hoverText.hAlign = "center"
 hoverText.visible = false
 
+var audioPlayingTexture = new Texture("images/audio_playing.png")
+const toggleBlau = new UIImage(canvas, audioPlayingTexture)
+toggleBlau.sourceLeft = 0 
+toggleBlau.sourceTop = 0
+toggleBlau.sourceWidth = 48
+toggleBlau.sourceHeight = 48
+toggleBlau.height = 26
+toggleBlau.width = 26
+toggleBlau.positionX = 10
+toggleBlau.positionY = 150
+toggleBlau.vAlign = "center"
+toggleBlau.hAlign = "left"
+toggleBlau.onClick = new OnClick((e)=>{
+  blauTexture.playing = !blauTexture.playing
+})
+toggleBlau.visible = false
+
+var firesidePlayingTexture = new Texture("images/fire_icon.png")
+const toggleFireside = new UIImage(canvas, firesidePlayingTexture)
+toggleFireside.sourceLeft = 0 
+toggleFireside.sourceTop = 0
+toggleFireside.sourceWidth = 26
+toggleFireside.sourceHeight = 26
+toggleFireside.height = 26
+toggleFireside.width = 26
+toggleFireside.positionX = 10
+toggleFireside.positionY = 120
+toggleFireside.vAlign = "center"
+toggleFireside.hAlign = "left"
+toggleFireside.onClick = new OnClick((e)=>{
+ if(firesidechat.volume > 0){
+   firesidechat.volume = 0
+   blauTexture.volume = .6
+ }
+ else{
+   firesidechat.volume = .7
+   blauTexture.volume = .08
+ }
+})
+toggleFireside.visible = false
+
 const playvideo = new UIImage(canvas, new Texture("images/PlayVideo.png"))
 playvideo.sourceLeft = 0 
 playvideo.sourceTop = 0
@@ -557,12 +594,13 @@ playvideo.onClick = new OnClick((e)=>{
   delay.addComponentOrReplace(new utils.Delay(3100,()=>{
     screen.getComponent(Transform).scale = new Vector3(12,6.75,1)
     engine.removeEntity(streamSource)
-    var texture = new VideoTexture(new VideoClip("https://vod.dcl.guru/2021-01-23-3LAUAfterparty-F.mp4"))
     var newMat = new BasicMaterial()
-    newMat.texture = texture
+    newMat.texture = blauTexture
     screen.addComponentOrReplace(newMat)
-    texture.playing = true
-    texture.volume = .1
+    blauTexture.playing = true
+    blauTexture.volume = .05
+    toggleBlau.visible = true
+    streamSource.getComponent(AudioStream).volume = 0
     engine.removeEntity(delay)
   }))
 })
