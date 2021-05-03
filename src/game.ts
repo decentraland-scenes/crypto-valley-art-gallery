@@ -1,8 +1,11 @@
 import resources from "./resources"
 import * as utils from '@dcl/ecs-scene-utils'
 import * as ui from '@dcl/ui-scene-utils'
-import { handlePoap } from './modules/poapHandler'
-//import { loadPictures } from "./modules/nftBuilder"
+import { getUserData } from "@decentraland/Identity";
+import { getCurrentRealm } from "@decentraland/EnvironmentAPI";
+import { Delay } from '@dcl/ecs-scene-utils'
+
+
 
 const building = new Entity()
 const transform =   new Transform({
@@ -335,10 +338,9 @@ streamSource.addComponent(
 streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
 
-var sceneMessageBus = new MessageBus()
-sceneMessageBus.on('activatePoap', () => {
-  POAPBooth.activate()
-})
+export let sceneMessageBus = new MessageBus()
+
+
 
 export class Dispenser extends Entity {
   idleAnim = new AnimationState('Idle_POAP', { looping: true })
@@ -370,7 +372,7 @@ export class Dispenser extends Entity {
           button.getComponent(Animator).getClip('Action').stop()
           button.getComponent(Animator).getClip('Action').play()
           sceneMessageBus.emit('activatePoap', {})
-          handlePoap(eventName)
+          makeTransaction(eventName)
         },
         { hoverText: 'Get Attendance Token' }
       )
@@ -387,7 +389,7 @@ export class Dispenser extends Entity {
     anim.getClip('Action_POAP').play()
 
     this.addComponentOrReplace(
-      new utils.Delay(4000, () => {
+      new Delay(4000, () => {
         anim.getClip('Action_POAP').stop()
 
         anim.getClip('Idle_POAP').play()
@@ -396,7 +398,53 @@ export class Dispenser extends Entity {
   }
 }
 
-let POAPBooth = new Dispenser({position: new Vector3(115, 0, 10),rotation:Quaternion.Euler(0,-90,0), scale: Vector3.One()},'playboy')
+
+async function makeTransaction(event: string) {
+  const userData = await getUserData();
+  if (!userData?.hasConnectedWeb3) {
+    log("no wallet");
+    return;
+  }
+  const realm = await getCurrentRealm();
+  if (realm?.serverName == "localhost") {
+    ui.displayAnnouncement(
+      "You cannot use the POAP machine in local/preview",
+      4
+    );
+    return;
+  }
+
+  const url = "https://poap.dcl.guru/" + event;
+  let method = "POST";
+  let headers = { "Content-Type": "application/json" };
+  let body = JSON.stringify({
+    address: userData.publicKey,
+    catalyst: realm?.serverName,
+    room: realm?.layer,
+  });
+
+  try {
+    let response = await fetch(url, {
+      headers: headers,
+      method: method,
+      body: body,
+    });
+    let data = await response.json();
+    if (data.ok == true) {
+      ui.displayAnnouncement("The POAP was sent to your address", 3);
+      sceneMessageBus.emit("activatePoap", {});
+    } else {
+      ui.displayAnnouncement(`Oops, there was an error: "${data.error}"`, 3);
+    }
+  } catch {
+    log("error fetching from POAP server ", url);
+  }
+
+  return;
+}
+
+
+new Dispenser({position: new Vector3(115, 0, 10),rotation:Quaternion.Euler(0,-90,0), scale: Vector3.One()},'playboy1')
 
 let POAPBanner = new Entity()
 POAPBanner.addComponent(new Transform({
