@@ -1,6 +1,7 @@
 import resources from "./resources"
 import * as utils from '@dcl/ecs-scene-utils'
 import * as ui from '@dcl/ui-scene-utils'
+import { handlePoap } from './modules/poapHandler'
 //import { loadPictures } from "./modules/nftBuilder"
 
 const building = new Entity()
@@ -37,35 +38,7 @@ clipHidden.play()
 clipHidden.looping = true 
 engine.addEntity(screenHolder)
 
-let names:any[] = ["one", "twentyOne", "puzzled", "redacted", "liquid","mosaic"]
-let counter = 0
-
 //NFTs
-/*
-for(var key in slimenft){
-   const nft = new Entity()
-   log(names[counter])
-   nft.addComponent(slimenft[key].nft)
-   nft.addComponent(slimenft[key].transform)
-   nft.addComponent(new OnPointerDown(()=>{
-     getPopup(currentNFT)
-   }))
-  nft.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(5,4,3),slimenft[key].triggerPos),
-  {
-    onCameraEnter: ()=>{
-      currentNFT = key
-      hovertext.visible = true
-    },
-    onCameraExit: ()=>{
-      hovertext.visible = false
-  },
-    enableDebug: true
-  }))
-  nft.setParent(building)
-  counter++
-}
-*/
-
 export class SlimeNFT extends Entity {
 
     data:any = {
@@ -139,31 +112,29 @@ export class SlimeNFT extends Entity {
 
     name:string
     popup:ui.CustomPrompt
-    
 
     constructor(name:any, parent:Entity){
         super()
         this.name = name
         this.setParent(parent)
-        log(name)
         this.addComponent(this.data[name].nft)
         this.addComponent(this.data[name].transform)
         
         this.addComponent(new OnPointerDown(()=>{
           this.showPopup(this.data[name])
         }))
-        /*
+        
         this.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(5,4,3),this.data[name].triggerPos),
-       {
-         onCameraEnter: ()=>{
-           hovertext.visible = true
-         },
-         onCameraExit: ()=>{
-           hovertext.visible = false
-       },
-         enableDebug: true
-       }))
-       */
+        {
+          onCameraEnter: ()=>{
+            hoverText.visible = true
+          },
+          onCameraExit: ()=>{
+            hoverText.visible = false
+        },
+          enableDebug: false
+        }))
+       
 
         this.popup = new ui.CustomPrompt(ui.PromptStyles.LIGHTLARGE,500,400,true)
         this.popup.addText("", 100, 185,Color4.Black(), 25)
@@ -203,14 +174,6 @@ liquidlogo.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
 liquidlogo.setParent(building)
 liquidlogo.addComponent(new Transform({position: new Vector3(78.97,5.1,25.34), scale: new Vector3(1.2,1.2,1.2)}))
 engine.addEntity(liquidlogo)
-
-/*
-const beach = new Entity()
-beach.addComponent(new GLTFShape('models/Beach_NFT.glb'))
-beach.setParent(building)
-beach.addComponent(new Transform({position: new Vector3(99.67,4.1,33.73)}))
-engine.addEntity(beach)
-*/
 
 //Slime test 
 const pinkSlime = new GLTFShape('models/Slime_01.glb')
@@ -407,7 +370,7 @@ export class Dispenser extends Entity {
           button.getComponent(Animator).getClip('Action').stop()
           button.getComponent(Animator).getClip('Action').play()
           sceneMessageBus.emit('activatePoap', {})
-          //handlePoap(eventName)
+          handlePoap(eventName)
         },
         { hoverText: 'Get Attendance Token' }
       )
@@ -452,19 +415,49 @@ POAPBanner.addComponent(
 )
 POAPBanner.addComponent(new GLTFShape('models/Audio_Banner.glb'))
 engine.addEntity(POAPBanner)
+POAPBanner.addComponentOrReplace(new OnPointerDown(()=>{
+  streamSource.getComponent(AudioStream).volume = 0.1
+  firesidechat.playing = true
+  firesidechat.volume = .7
+  firesidePlaying = true
+}))
+POAPBanner.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(2,4,3),new Vector3(-1.5,0,1.5)),
+{
+  onCameraEnter: ()=>{
+    !firesidePlaying?  hoverText.visible = true : null
+    !firesidePlaying? hoverText.value = "Click to start Fireside Chat guided tour" : null
+  },
+  onCameraExit: ()=>{
+    
+    hoverText.visible = false
+    hoverText.value = "Click NFT for info"
+},
+  enableDebug: false
+}))
 
-/*
+var firesidePlaying = false
+const audioCube = new Entity()
+const chatClip = new AudioClip("sounds/playboy_audio.mp3")
+export var firesidechat = new AudioSource(chatClip)
+audioCube.addComponent(firesidechat)
+audioCube.addComponent(new Transform({
+  position: new Vector3(0, 2,0)
+}))
+engine.addEntity(audioCube)
+audioCube.setParent(Attachable.AVATAR)
+
+
 var screen = new Entity()
 screen.addComponent(new PlaneShape())
 screen.addComponent(new Material())
 screen.getComponent(Material).albedoColor = Color4.Black()
 screen.addComponent(new Transform({
-  position: new Vector3(50,9,20),
+  position: new Vector3(48.2,8,21),
   rotation: Quaternion.Euler(0,90,0),
-  scale: new Vector3(12,6.75,1)
+  scale: Vector3.Zero()
 }))
 engine.addEntity(screen)
-*/
+
 
 async function getBid(){
 
@@ -531,6 +524,18 @@ descriptionText.vAlign = "center"
 descriptionText.hAlign = "center"
 descriptionText.visible = true
 
+export var hoverText = new UIText(canvas)
+hoverText.height = 25
+hoverText.value = "Click NFT for info"
+hoverText.width = 275
+hoverText.fontSize = 20
+hoverText.positionY = 10
+hoverText.positionX = 20
+hoverText.color = Color4.White()
+hoverText.vAlign = "bottom"
+hoverText.hAlign = "center"
+hoverText.visible = false
+
 const playvideo = new UIImage(canvas, new Texture("images/PlayVideo.png"))
 playvideo.sourceLeft = 0 
 playvideo.sourceTop = 0
@@ -547,6 +552,19 @@ playvideo.onClick = new OnClick((e)=>{
   clipShow.play()
   playvideo.visible = false
   engine.removeSystem(ava)
+  var delay = new Entity()
+  engine.addEntity(delay)
+  delay.addComponentOrReplace(new utils.Delay(3100,()=>{
+    screen.getComponent(Transform).scale = new Vector3(12,6.75,1)
+    engine.removeEntity(streamSource)
+    var texture = new VideoTexture(new VideoClip("https://vod.dcl.guru/2021-01-23-3LAUAfterparty-F.mp4"))
+    var newMat = new BasicMaterial()
+    newMat.texture = texture
+    screen.addComponentOrReplace(newMat)
+    texture.playing = true
+    texture.volume = .1
+    engine.removeEntity(delay)
+  }))
 })
 playvideo.visible = false
 
