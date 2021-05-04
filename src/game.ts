@@ -152,7 +152,6 @@ export class SlimeNFT extends Entity {
             descriptionText.visible = false
         },ui.ButtonStyles.ROUNDBLACK)
         this.popup.addButton("NiftyGateway", 150,-150,()=>{
-            log('ok')
         openExternalURL(this.data[name].link)
         },ui.ButtonStyles.RED)       
     }
@@ -502,14 +501,46 @@ screen.addComponentOrReplace(new OnPointerDown(()=>{
   blauTexture.playing = !blauTexture.playing
 }))
 
+var countdown = new Entity()
+engine.addEntity(countdown)
+countdown.addComponent(new TextShape(""))
+countdown.addComponent(new Transform({
+  position: new Vector3(103.75, 2, 14.4),
+  rotation: Quaternion.Euler(0,90,0),
+  scale: new Vector3(1,1,1)
+}))
+
+countdown.getComponent(TextShape).font = new Font(Fonts.SanFrancisco_Heavy)
+countdown.getComponent(TextShape).fontSize = 4
+countdown.getComponent(TextShape).color = Color3.Black()
+
+var timer = new Entity()
+engine.addEntity(timer)
+timer.addComponentOrReplace(new utils.Interval(1000, ()=>{
+  let distance = (1620167400 * 1000) - (Date.now())
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  if(hours < 1 && minutes < 1 && seconds < 1){
+    engine.removeEntity(timer)
+    countdown.getComponent(TextShape).value = ""
+  }
+  else{
+  countdown.getComponent(TextShape).value = (days < 10 ? "0" + days : days) + ":" + (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)
+  }
+
+}))
 
 async function getBid(){
 
   let params = {
     contractAddress: "0xfd7a881e94f157a1721938777644ea0f0d89b498",
     current:1,
-    size:10,
-    tokenId: "6"
+    size:1,
+    niftyType: "6"
   }
 
   let url ="https://lkdcl.co/fent/logic/getnifty"
@@ -518,15 +549,11 @@ async function getBid(){
         method: "POST",
       body:JSON.stringify(params)})
   let json = await response.json()
-  log(json)
   var results = json.message.data.results
-  for(var i = 0; i < results.length; i++){
-    var date = new Date(results[i].Timestamp)
-    log(date)
-    if(results[i].Type == 'offer'){
-      log('we have a bid')
-      log('offer amount: $' + (results[i].BidAmountInCents / 100))
-    }
+  if(results[0].user_prof.name != bidText1.getComponent(TextShape).value){
+    bidText3.getComponent(TextShape).value = bidText2.getComponent(TextShape).value
+    bidText2.getComponent(TextShape).value = bidText1.getComponent(TextShape).value
+    bidText1.getComponent(TextShape).value = results[0].user_prof.name
   }
 }
 getBid()
@@ -534,24 +561,46 @@ getBid()
 
 var bidInterval = new Entity()
 bidInterval.addComponent(new utils.Interval(10000,()=>{
-log('getting bid')
+  getBid()
 }))
-//engine.addEntity(bidInterval)
+engine.addEntity(bidInterval)
 
 
-/*
-var bidText = new Entity()
-bidText.addComponent(new TextShape("Highest Bidder"))
-bidText.addComponent(new Transform({
-  position: new Vector3(103.7, 4, 16),
+var bidText1 = new Entity()
+bidText1.addComponent(new TextShape(""))
+bidText1.addComponent(new Transform({
+  position: new Vector3(103.7, 5, 14.35),
   rotation: Quaternion.Euler(0,90,0)
 }))
-bidText.getComponent(TextShape).fontSize = 2
-bidText.getComponent(TextShape).hTextAlign = "left"
-bidText.getComponent(TextShape).color = Color3.Black()
-bidText.getComponent(TextShape).value = "Highest Bidder\nAldo: $190\nLastraum: $150"
-engine.addEntity(bidText)
-*/
+bidText1.getComponent(TextShape).fontSize = 3
+bidText1.getComponent(TextShape).hTextAlign = "center"
+bidText1.getComponent(TextShape).color = Color3.Black()
+bidText1.getComponent(TextShape).font = new Font(Fonts.SanFrancisco_Heavy)
+engine.addEntity(bidText1)
+
+var bidText2 = new Entity()
+bidText2.addComponent(new TextShape(""))
+bidText2.addComponent(new Transform({
+  position: new Vector3(103.7, 4.25, 14.35),
+  rotation: Quaternion.Euler(0,90,0)
+}))
+bidText2.getComponent(TextShape).fontSize = 3
+bidText2.getComponent(TextShape).hTextAlign = "center"
+bidText2.getComponent(TextShape).color = Color3.Black()
+bidText2.getComponent(TextShape).font = new Font(Fonts.SanFrancisco_Heavy)
+engine.addEntity(bidText2)
+
+var bidText3 = new Entity()
+bidText3.addComponent(new TextShape(""))
+bidText3.addComponent(new Transform({
+  position: new Vector3(103.7, 3.5, 14.35),
+  rotation: Quaternion.Euler(0,90,0)
+}))
+bidText3.getComponent(TextShape).fontSize = 3
+bidText3.getComponent(TextShape).hTextAlign = "center"
+bidText3.getComponent(TextShape).color = Color3.Black()
+bidText3.getComponent(TextShape).font = new Font(Fonts.SanFrancisco_Heavy)
+engine.addEntity(bidText3)
 
 const canvas = new UICanvas()
 export var descriptionText = new UIText(canvas)
