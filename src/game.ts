@@ -46,7 +46,7 @@ export class SlimeNFT extends Entity {
 
     data:any = {
         one:{
-        link:"http://www.google.com",
+        link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/6",
         image:"images/one.png",
         address:"",
         tokenId:"",
@@ -57,10 +57,10 @@ export class SlimeNFT extends Entity {
         triggerPos:new Vector3(-4,-2,0),
     },
     twentyOne:{
-        link:"",
+        link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/2",
         image:"images/twentyOne.png",
-        address:"",
-        tokenId:"",
+        address:"0xfd7a881e94f157a1721938777644ea0f0d89b498",
+        tokenId:"2",
         title:"2021 —> 1861",
         description:"It can be a challenge to comprehend NFTs in 2021, so imagine how the concept would have been received in 1861. In addition to the direct connection to the Liquid Summer theme courtesy of Domenico Morelli’s dreamy 1861 bathing beauties, fused with a poolside image of 2015 Playmate Monica Sims, 2021 —> 1861  is a multi-era mashup that speaks to the fluidity of time, the liquidity of crypto, and the sometimes unbelievable evolution of technology itself.",
         nft:new GLTFShape('models/2021_NFT.glb'),
@@ -68,7 +68,7 @@ export class SlimeNFT extends Entity {
         triggerPos:new Vector3(0,-2,-4)
     },
     puzzled:{
-        link:"",
+        link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/3",
         image:"images/puzzled.png",
         address:"",
         tokenId:"",
@@ -79,10 +79,10 @@ export class SlimeNFT extends Entity {
         triggerPos:new Vector3(0,-2,4)
     },
     redacted:{
-        link:"",
+        link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/5",
         image:"images/redacted.png",
-        address:"",
-        tokenId:"",
+        address:"0xfd7a881e94f157a1721938777644ea0f0d89b498",
+        tokenId:"5",
         title:"Redacted",
         description:"Redacted marries two classic Playboy themes that are as relevant today as they were at the brand’s inception: fine art and freedom-of-speech. Redacted pays its respects to these key components of Playboy’s DNA through collage material that features an article about a Reagan-era attempt to censor PLAYBOY, layered atop contemporary photography and illustration.\n\nHidden Rabbit Head Clue\nWhen it comes to standing up for free speech, our Rabbit firmly believ   es you should raise your fist and hodl on tight to your convictions.\n\nOriginal Credits\nApril 2018 Playmate Nereyda Bird photographed by Wiissa for the pictorial “Bird of Paradise.” Collage material from “Defying the Anti-Porn Police” by James R. Petersen, illustrated by Rob Stites.",
         nft:new GLTFShape('models/Redacted_NFT.glb'),
@@ -90,10 +90,10 @@ export class SlimeNFT extends Entity {
         triggerPos:new Vector3(0,-2,-4)
     },
     liquid:{
-        link:"",
+        link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/1",
         image:"images/liquid.png",
-        address:"",
-        tokenId:"",
+        address:"0xfd7a881e94f157a1721938777644ea0f0d89b498",
+        tokenId:"1",
         title:"Liquid Summer",
         description:"March 2019 Playmate Miki Hamano and photographer Ana Dias are recurring Playboy contributors who embody the spirit of the brand on both creative and personal levels, so it's fitting that an image from their pictorial serves as the primary source material for the collection’s eponymous work. Both exude a level of confidence that only comes from being comfortable in their own skin. As a result, they light up every room, or in this case--every classic Playboy beach shoot--that they visit.\n\nHidden Rabbit Head Clue\nWhether daring to dive into deep waters or lounging luxuriously on the beach, our Rabbit isn’t afraid to make a repeat appearance.\n\nOriginal Credits\nMarch 2019 Playmate Miki Hamano photographed by Ana Dias",
         nft:new GLTFShape('models/Beach_NFT.glb'),
@@ -101,10 +101,10 @@ export class SlimeNFT extends Entity {
         triggerPos:new Vector3(0,-2,-6)
     },
     mosaic:{
-        link:"",
+        link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/4",
         image:"images/mosaic.png",
-        address:"",
-        tokenId:"",
+        address:"0xfd7a881e94f157a1721938777644ea0f0d89b498",
+        tokenId:"4",
         title:"Mosaic",
         description:"Mosaic was one of the first pieces Slimesunday created for Liquid Summer, and it quickly cemented some of the key creative and conceptual throughlines that ripple throughout the collection: censorship, transformation, and a thoughtful balance between style and substance. Although pixelation is usually associated with censorship, Mosaic challenges that preconception by fusing it with collage, and transforming the original photograph into a different version of itself.\n\nHidden Rabbit Head Clue\nOur Rabbit can always take the heat, but knows that cooling off can be just as sweet.\n\nOriginal Credits\nApril 2018 Playmate Nereyda Bird photographed by Wiissa",
         nft:new GLTFShape('models/Mosaic_NFT.glb'),
@@ -506,10 +506,10 @@ screen.addComponentOrReplace(new OnPointerDown(()=>{
 async function getBid(){
 
   let params = {
-    contractAddress: "0xf91b673aaf37242257618bf8b467d20adcea13ce",
+    contractAddress: "0xfd7a881e94f157a1721938777644ea0f0d89b498",
     current:1,
     size:10,
-    tokenId: "5900060040"
+    tokenId: "6"
   }
 
   let url ="https://lkdcl.co/fent/logic/getnifty"
@@ -525,7 +525,7 @@ async function getBid(){
     log(date)
     if(results[i].Type == 'offer'){
       log('we have a bid')
-      log('offer amount: $' + (results[i].OfferAmountInCents / 100))
+      log('offer amount: $' + (results[i].BidAmountInCents / 100))
     }
   }
 }
