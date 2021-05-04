@@ -55,6 +55,10 @@ export class SlimeNFT extends Entity {
         nft:new GLTFShape('models/Satoshi_NFT.glb'),
         transform:new Transform({position: new Vector3(103.68,3.9,19)}),
         triggerPos:new Vector3(-4,-2,0),
+        highlight:{
+          position:new Vector3(.05,0,0),
+          rotation: Quaternion.Euler(0,90,0)
+        }
     },
     twentyOne:{
         link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/2",
@@ -65,7 +69,11 @@ export class SlimeNFT extends Entity {
         description:"It can be a challenge to comprehend NFTs in 2021, so imagine how the concept would have been received in 1861. In addition to the direct connection to the Liquid Summer theme courtesy of Domenico Morelli’s dreamy 1861 bathing beauties, fused with a poolside image of 2015 Playmate Monica Sims, 2021 —> 1861  is a multi-era mashup that speaks to the fluidity of time, the liquidity of crypto, and the sometimes unbelievable evolution of technology itself.",
         nft:new GLTFShape('models/2021_NFT.glb'),
         transform:new Transform({position: new Vector3(109,4.1,33.73)}),
-        triggerPos:new Vector3(0,-2,-4)
+        triggerPos:new Vector3(0,-2,-4),
+        highlight:{
+          position:new Vector3(0,0,.05),
+          rotation: Quaternion.Euler(0,0,0)
+        }
     },
     puzzled:{
         link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/3",
@@ -76,7 +84,11 @@ export class SlimeNFT extends Entity {
         description:"Clever cut-outs and puzzle-themed imagery, often born from the imagination of founding art director and Rabbit Head logo creator Arthur Paul, have made recurring appearances within the pages of PLAYBOY magazine and on some of its most iconic covers--some of which have been transformed into actual puzzles that have given readers a special way to take the Rabbit home. Slimesunday gives a digital nod to the tradition with this cheeky adaptation of an image from a 2000 pictorial shot in Fiji.\n\nHidden Rabbit Head Clue\nOur Rabbit is no beach bum; he knows that without a strong backbone, beauty is only skin deep.\n\nOriginal Credits\nAugust 1997 Playmate Kalin Olson, April 1997 Playmate Kelly Marie Monaco and January 1996 Playmate Victoria Fuller, photographed by Richard Fegley",
         nft:new GLTFShape('models/Puzzled_NFT.glb'),
         transform:new Transform({position: new Vector3(55.43, 4.1, 4.16)}),
-        triggerPos:new Vector3(0,-2,4)
+        triggerPos:new Vector3(0,-2,4),
+        highlight:{
+          position:new Vector3(0,0,.1,.05),
+          rotation: Quaternion.Euler(0,0,0)
+        }
     },
     redacted:{
         link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/5",
@@ -87,7 +99,11 @@ export class SlimeNFT extends Entity {
         description:"Redacted marries two classic Playboy themes that are as relevant today as they were at the brand’s inception: fine art and freedom-of-speech. Redacted pays its respects to these key components of Playboy’s DNA through collage material that features an article about a Reagan-era attempt to censor PLAYBOY, layered atop contemporary photography and illustration.\n\nHidden Rabbit Head Clue\nWhen it comes to standing up for free speech, our Rabbit firmly believ   es you should raise your fist and hodl on tight to your convictions.\n\nOriginal Credits\nApril 2018 Playmate Nereyda Bird photographed by Wiissa for the pictorial “Bird of Paradise.” Collage material from “Defying the Anti-Porn Police” by James R. Petersen, illustrated by Rob Stites.",
         nft:new GLTFShape('models/Redacted_NFT.glb'),
         transform:new Transform({position: new Vector3(52.987,4.1,33.73)}),
-        triggerPos:new Vector3(0,-2,-4)
+        triggerPos:new Vector3(0,-2,-4),
+        highlight:{
+          position:new Vector3(0,0,.05),
+          rotation: Quaternion.Euler(0,0,0)
+        }
     },
     liquid:{
         link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/1",
@@ -98,7 +114,11 @@ export class SlimeNFT extends Entity {
         description:"March 2019 Playmate Miki Hamano and photographer Ana Dias are recurring Playboy contributors who embody the spirit of the brand on both creative and personal levels, so it's fitting that an image from their pictorial serves as the primary source material for the collection’s eponymous work. Both exude a level of confidence that only comes from being comfortable in their own skin. As a result, they light up every room, or in this case--every classic Playboy beach shoot--that they visit.\n\nHidden Rabbit Head Clue\nWhether daring to dive into deep waters or lounging luxuriously on the beach, our Rabbit isn’t afraid to make a repeat appearance.\n\nOriginal Credits\nMarch 2019 Playmate Miki Hamano photographed by Ana Dias",
         nft:new GLTFShape('models/Beach_NFT.glb'),
         transform:new Transform({position: new Vector3(99.67,4.1,33.73)}),
-        triggerPos:new Vector3(0,-2,-6)
+        triggerPos:new Vector3(0,-2,-6),
+        highlight:{
+          position:new Vector3(0,0,.05),
+          rotation: Quaternion.Euler(0,0,0)
+        }
     },
     mosaic:{
         link:"https://niftygateway.com/itemdetail/primary/0xfd7a881e94f157a1721938777644ea0f0d89b498/4",
@@ -109,7 +129,11 @@ export class SlimeNFT extends Entity {
         description:"Mosaic was one of the first pieces Slimesunday created for Liquid Summer, and it quickly cemented some of the key creative and conceptual throughlines that ripple throughout the collection: censorship, transformation, and a thoughtful balance between style and substance. Although pixelation is usually associated with censorship, Mosaic challenges that preconception by fusing it with collage, and transforming the original photograph into a different version of itself.\n\nHidden Rabbit Head Clue\nOur Rabbit can always take the heat, but knows that cooling off can be just as sweet.\n\nOriginal Credits\nApril 2018 Playmate Nereyda Bird photographed by Wiissa",
         nft:new GLTFShape('models/Mosaic_NFT.glb'),
         transform:new Transform({position: new Vector3(103.2,4.1,4.16)}),
-        triggerPos:new Vector3(0,-2,3)
+        triggerPos:new Vector3(0,-2,3),
+        highlight:{
+          position:new Vector3(0,0,.05),
+          rotation: Quaternion.Euler(0,0,0)
+        }
     }
     }
 
@@ -164,12 +188,15 @@ export class SlimeNFT extends Entity {
     }
 }
 
-new SlimeNFT("one", building)
-new SlimeNFT("liquid", building)
-new SlimeNFT("mosaic", building)
-new SlimeNFT("redacted", building)
-new SlimeNFT("puzzled", building)
-new SlimeNFT("twentyOne", building)
+var one = new SlimeNFT("one", building)
+var liquid = new SlimeNFT("liquid", building)
+var mosaic = new SlimeNFT("mosaic", building)
+var redacted = new SlimeNFT("redacted", building)
+var puzzled = new SlimeNFT("puzzled", building)
+var twentyOne = new SlimeNFT("twentyOne", building)
+
+var currentNFT = new Entity()
+currentNFT.addComponent(new GLTFShape("models/current_nft.glb"))
 
 const liquidlogo = new Entity()
 liquidlogo.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
@@ -460,6 +487,7 @@ POAPBanner.addComponentOrReplace(new OnPointerDown(()=>{
   firesidechat.volume = .7
   firesidePlaying = true
   toggleFireside.visible = true
+  startHighlightDelays()
 }))
 POAPBanner.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(2,4,3),new Vector3(1.5,0,1.5)),
 {
@@ -534,6 +562,80 @@ timer.addComponentOrReplace(new utils.Interval(1000, ()=>{
 
 }))
 
+function startHighlightDelays(){
+  var onedelay = new Entity()
+  engine.addEntity(onedelay)
+  onedelay.addComponentOrReplace(new utils.Delay(85000,()=>{
+    log('highlighting one')
+    currentNFT.setParent(one)
+    currentNFT.addComponentOrReplace(new Transform({
+      rotation: one.data.one.highlight.rotation,
+      position: one.data.one.highlight.position
+    }))
+    engine.removeEntity(onedelay)
+  }))
+
+  var mosaicdelay = new Entity()
+  engine.addEntity(mosaicdelay)
+  mosaicdelay.addComponentOrReplace(new utils.Delay(230000,()=>{
+    log('highlighting mosaic')
+    currentNFT.setParent(mosaic)
+    currentNFT.addComponentOrReplace(new Transform({
+      rotation: mosaic.data.mosaic.highlight.rotation,
+      position: mosaic.data.mosaic.highlight.position
+    }))
+    engine.removeEntity(mosaicdelay)
+  }))
+
+  var liquiddelay = new Entity()
+  engine.addEntity(liquiddelay)
+  liquiddelay.addComponentOrReplace(new utils.Delay(285000,()=>{
+    log('highlighting liquid')
+    currentNFT.setParent(liquid)
+    currentNFT.addComponentOrReplace(new Transform({
+      rotation: liquid.data.liquid.highlight.rotation,
+      position: liquid.data.liquid.highlight.position
+    }))
+    engine.removeEntity(liquiddelay)
+  }))
+
+  var twentyonedelay = new Entity()
+  engine.addEntity(twentyonedelay)
+  twentyonedelay.addComponentOrReplace(new utils.Delay(375000,()=>{
+    log('highlighting twentyOne')
+    currentNFT.setParent(twentyOne)
+    currentNFT.addComponentOrReplace(new Transform({
+      rotation: twentyOne.data.twentyOne.highlight.rotation,
+      position: twentyOne.data.twentyOne.highlight.position
+    }))
+    engine.removeEntity(twentyonedelay)
+  }))
+
+  var redacteddelay = new Entity()
+  engine.addEntity(redacteddelay)
+  redacteddelay.addComponentOrReplace(new utils.Delay(464000,()=>{
+    log('highlighting redacted')
+    currentNFT.setParent(redacted)
+    currentNFT.addComponentOrReplace(new Transform({
+      rotation: redacted.data.redacted.highlight.rotation,
+      position: redacted.data.redacted.highlight.position
+    }))
+    engine.removeEntity(redacteddelay)
+  }))
+
+  var puzzleddelay = new Entity()
+  engine.addEntity(puzzleddelay)
+  puzzleddelay.addComponentOrReplace(new utils.Delay(626000,()=>{
+    log('highlighting puzzled')
+    currentNFT.setParent(puzzled)
+    currentNFT.addComponentOrReplace(new Transform({
+      rotation: puzzled.data.puzzled.highlight.rotation,
+      position: puzzled.data.puzzled.highlight.position
+    }))
+    engine.removeEntity(puzzleddelay)
+  }))
+}
+
 async function getBid(){
 
   let params = {
@@ -550,11 +652,14 @@ async function getBid(){
       body:JSON.stringify(params)})
   let json = await response.json()
   var results = json.message.data.results
-  if(results[0].user_prof.name != bidText1.getComponent(TextShape).value){
-    bidText3.getComponent(TextShape).value = bidText2.getComponent(TextShape).value
-    bidText2.getComponent(TextShape).value = bidText1.getComponent(TextShape).value
-    bidText1.getComponent(TextShape).value = results[0].user_prof.name
+  if(results.length > 0){
+    if(results[0].user_prof.name != bidText1.getComponent(TextShape).value){
+      bidText3.getComponent(TextShape).value = bidText2.getComponent(TextShape).value
+      bidText2.getComponent(TextShape).value = bidText1.getComponent(TextShape).value
+      bidText1.getComponent(TextShape).value = results[0].user_prof.name
+    }
   }
+
 }
 getBid()
 
