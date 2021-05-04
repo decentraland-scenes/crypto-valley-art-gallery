@@ -658,12 +658,12 @@ async function getBid(){
       body:JSON.stringify(params)})
   let json = await response.json()
   var results = json.message.data.results
-  if(results.length > 0){
-    if(results[0].user_prof.name != bidText1.getComponent(TextShape).value){
-      bidText3.getComponent(TextShape).value = bidText2.getComponent(TextShape).value
-      bidText2.getComponent(TextShape).value = bidText1.getComponent(TextShape).value
-      bidText1.getComponent(TextShape).value = results[0].user_prof.name
-    }
+  var name1 = results[0].user_prof.name.split(" ")
+  var name2 = results[1].user_prof.name.split(" ")
+  var name3 = results[2].user_prof.name.split(" ")
+  bidText3.getComponent(TextShape).value = name3[0]
+  bidText2.getComponent(TextShape).value =  name2[0]
+  bidText1.getComponent(TextShape).value =  name1[0]
   }
 
 }
