@@ -86,7 +86,7 @@ export class SlimeNFT extends Entity {
         transform:new Transform({position: new Vector3(55.43, 4.1, 4.16)}),
         triggerPos:new Vector3(0,-2,4),
         highlight:{
-          position:new Vector3(0,0,.1,.05),
+          position:new Vector3(0,0,.05),
           rotation: Quaternion.Euler(0,0,0)
         }
     },
@@ -197,6 +197,10 @@ var twentyOne = new SlimeNFT("twentyOne", building)
 
 var currentNFT = new Entity()
 currentNFT.addComponent(new GLTFShape("models/current_nft.glb"))
+engine.addEntity(currentNFT)
+currentNFT.addComponentOrReplace(new Transform({
+  scale:Vector3.Zero()
+}))
 
 const liquidlogo = new Entity()
 liquidlogo.addComponent(new GLTFShape('models/LiquidSummer_NFT.glb'))
@@ -566,11 +570,11 @@ function startHighlightDelays(){
   var onedelay = new Entity()
   engine.addEntity(onedelay)
   onedelay.addComponentOrReplace(new utils.Delay(85000,()=>{
-    log('highlighting one')
     currentNFT.setParent(one)
     currentNFT.addComponentOrReplace(new Transform({
       rotation: one.data.one.highlight.rotation,
-      position: one.data.one.highlight.position
+      position: one.data.one.highlight.position,
+      scale: Vector3.One()
     }))
     engine.removeEntity(onedelay)
   }))
@@ -578,7 +582,6 @@ function startHighlightDelays(){
   var mosaicdelay = new Entity()
   engine.addEntity(mosaicdelay)
   mosaicdelay.addComponentOrReplace(new utils.Delay(230000,()=>{
-    log('highlighting mosaic')
     currentNFT.setParent(mosaic)
     currentNFT.addComponentOrReplace(new Transform({
       rotation: mosaic.data.mosaic.highlight.rotation,
@@ -590,7 +593,6 @@ function startHighlightDelays(){
   var liquiddelay = new Entity()
   engine.addEntity(liquiddelay)
   liquiddelay.addComponentOrReplace(new utils.Delay(285000,()=>{
-    log('highlighting liquid')
     currentNFT.setParent(liquid)
     currentNFT.addComponentOrReplace(new Transform({
       rotation: liquid.data.liquid.highlight.rotation,
@@ -602,7 +604,6 @@ function startHighlightDelays(){
   var twentyonedelay = new Entity()
   engine.addEntity(twentyonedelay)
   twentyonedelay.addComponentOrReplace(new utils.Delay(375000,()=>{
-    log('highlighting twentyOne')
     currentNFT.setParent(twentyOne)
     currentNFT.addComponentOrReplace(new Transform({
       rotation: twentyOne.data.twentyOne.highlight.rotation,
@@ -614,7 +615,6 @@ function startHighlightDelays(){
   var redacteddelay = new Entity()
   engine.addEntity(redacteddelay)
   redacteddelay.addComponentOrReplace(new utils.Delay(464000,()=>{
-    log('highlighting redacted')
     currentNFT.setParent(redacted)
     currentNFT.addComponentOrReplace(new Transform({
       rotation: redacted.data.redacted.highlight.rotation,
@@ -625,14 +625,20 @@ function startHighlightDelays(){
 
   var puzzleddelay = new Entity()
   engine.addEntity(puzzleddelay)
-  puzzleddelay.addComponentOrReplace(new utils.Delay(626000,()=>{
-    log('highlighting puzzled')
+  puzzleddelay.addComponentOrReplace(new utils.Delay(580000,()=>{
     currentNFT.setParent(puzzled)
     currentNFT.addComponentOrReplace(new Transform({
       rotation: puzzled.data.puzzled.highlight.rotation,
       position: puzzled.data.puzzled.highlight.position
     }))
     engine.removeEntity(puzzleddelay)
+  }))
+
+  var finishdelay = new Entity()
+  engine.addEntity(finishdelay)
+  finishdelay.addComponentOrReplace(new utils.Delay(669000,()=>{
+    engine.removeEntity(currentNFT)
+    engine.removeEntity(finishdelay)
   }))
 }
 
