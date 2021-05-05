@@ -664,7 +664,6 @@ async function getBid(){
   bidText3.getComponent(TextShape).value = name3[0]
   bidText2.getComponent(TextShape).value =  name2[0]
   bidText1.getComponent(TextShape).value =  name1[0]
-  }
 
 }
 getBid()
