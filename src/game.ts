@@ -1,3 +1,10 @@
+// Input
+const input = Input.instance
+
+input.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, true, (event) => {
+  log("Hit Point: ", event.hit.hitPoint)
+})
+
 // Building
 const building = new Entity()
 building.addComponent(
@@ -16,3 +23,7 @@ streamSource.addComponent(
 streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
 
+// Stills
+const stills = new Entity()
+stills.addComponent(new GLTFShape("models/stillArtworks.glb"))
+engine.addEntity(stills)

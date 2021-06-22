@@ -2,33 +2,6 @@ import * as utils from "@dcl/ecs-scene-utils"
 
 export const videoData = [
   {
-    frame: new GLTFShape("models/videoFrames/vidFrame1024x1024.glb"),
-    frameSize: new Vector3(5.303, 5.303, 1),
-    still: new Texture("videos/blue_250_gto_thumb.jpg"),
-    video: new VideoClip("videos/blue_250_gto.mp4"),
-    transform: new Transform({ position: new Vector3(66.2, 3.25, 44.834), scale: new Vector3(0.55, 0.55, 0.5) }),
-    trigger: new utils.TriggerBoxShape(new Vector3(4, 5, 8), new Vector3(0, 0, -5)),
-    link: "https://makersplace.com/"
-  },
-  {
-    frame: new GLTFShape("models/videoFrames/vidFrame1024x1024.glb"),
-    frameSize: new Vector3(5.303, 5.303, 1),
-    still: new Texture("videos/silver_250_gto_thumb.jpg"),
-    video: new VideoClip("videos/silver_250_gto.mp4"),
-    transform: new Transform({ position: new Vector3(70.25, 3.25, 44.834), scale: new Vector3(0.55, 0.55, 0.5) }),
-    trigger: new utils.TriggerBoxShape(new Vector3(4, 5, 8), new Vector3(0, 0, -5)),
-    link: "https://makersplace.com/"
-  },
-  {
-    frame: new GLTFShape("models/videoFrames/vidFrame1024x1024.glb"),
-    frameSize: new Vector3(5.303, 5.303, 1),
-    still: new Texture("videos/red_250 gto_thumb.jpg"),
-    video: new VideoClip("videos/red_250 gto.mp4"),
-    transform: new Transform({ position: new Vector3(74.3, 3.25, 44.834), scale: new Vector3(0.55, 0.55, 0.5) }),
-    trigger: new utils.TriggerBoxShape(new Vector3(4, 5, 8), new Vector3(0, 0, -5)),
-    link: "https://makersplace.com/"
-  },
-  {
     frame: new GLTFShape("models/videoFrames/vidFrame1280x720.glb"),
     frameSize: new Vector3(9.6, 5.4, 1),
     still: new Texture("videos/atm_our_mission_thumb.jpg"),
