@@ -1,3 +1,6 @@
+import { videoData } from "./modules/videoData"
+import { VideoFrame } from "./modules/videoFrame"
+
 // Input
 const input = Input.instance
 
@@ -27,3 +30,16 @@ engine.addEntity(streamSource)
 const stills = new Entity()
 stills.addComponent(new GLTFShape("models/stillArtworks.glb"))
 engine.addEntity(stills)
+
+// Videos
+for (let i = 0; i < videoData.length; i++) {
+  const videoFrame = new VideoFrame(
+    videoData[i].frame,
+    videoData[i].frameSize,
+    videoData[i].still,
+    videoData[i].video,
+    videoData[i].transform,
+    videoData[i].trigger,
+    videoData[i].link
+  )
+}

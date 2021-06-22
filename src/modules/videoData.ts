@@ -2,30 +2,30 @@ import * as utils from "@dcl/ecs-scene-utils"
 
 export const videoData = [
   {
-    frame: new GLTFShape("models/videoFrames/vidFrame1280x720.glb"),
+    frame: new GLTFShape("models/vidFrame1280x720.glb"),
     frameSize: new Vector3(9.6, 5.4, 1),
-    still: new Texture("videos/atm_our_mission_thumb.jpg"),
-    video: new VideoClip("videos/atm_our_mission.mp4"),
-    transform: new Transform({ position: new Vector3(48, 4.95, 36.693), scale: new Vector3(1.1, 1.1, 1), rotation: Quaternion.Euler(0, 180, 0) }),
+    still: new Texture("videos/twinmill_thumb.jpg"),
+    video: new VideoClip("videos/twinmill.mp4"),
+    transform: new Transform({ position: new Vector3(79, 4.5, 25), scale: new Vector3(0.9, 0.9, 1), rotation: Quaternion.Euler(0, 0, 0) }),
+    trigger: new utils.TriggerBoxShape(new Vector3(12, 8, 8), new Vector3(0, 0, -5)),
+    link: "https://nft.mattelcreations.com/twin-mill"
+  },
+  {
+    frame: new GLTFShape("models/vidFrame1280x720.glb"),
+    frameSize: new Vector3(9.6, 5.4, 1),
+    still: new Texture("videos/boneshaker_thumb.jpg"),
+    video: new VideoClip("videos/boneshaker.mp4"),
+    transform: new Transform({ position: new Vector3(79, 4.5, 25.7), scale: new Vector3(0.9, 0.9, 1), rotation: Quaternion.Euler(0, 180, 0) }),
     trigger: new utils.TriggerBoxShape(new Vector3(12, 8, 8), new Vector3(0, 0, 5)),
-    link: "https://makersplace.com/"
+    link: "https://nft.mattelcreations.com/bone-shaker"
   },
   {
-    frame: new GLTFShape("models/videoFrames/vidFrame1280x720.glb"),
+    frame: new GLTFShape("models/vidFrame1280x720.glb"),
     frameSize: new Vector3(9.6, 5.4, 1),
-    still: new Texture("videos/breakdown_thumb.jpg"),
-    video: new VideoClip("videos/breakdown.mp4"),
-    transform: new Transform({ position: new Vector3(34.750, 3.2, 51), scale: new Vector3(0.5, 0.5, 0.5), rotation: Quaternion.Euler(0, -45, 0) }),
-    trigger: new utils.TriggerBoxShape(new Vector3(12, 8, 8), new Vector3(0, 0, -2.5)),
-    link: "https://makersplace.com/"
-  },
-  {
-    frame: new GLTFShape("models/videoFrames/vidFrame1280x720.glb"),
-    frameSize: new Vector3(9.6, 5.4, 1),
-    still: new Texture("videos/ferrari_250_gto_thumb.jpg"),
-    video: new VideoClip("videos/ferrari_250_gto.mp4"),
-    transform: new Transform({ position: new Vector3(61.250, 3.2, 51), scale: new Vector3(0.5, 0.5, 0.5), rotation: Quaternion.Euler(0, 45, 0) }),
-    trigger: new utils.TriggerBoxShape(new Vector3(12, 8, 8), new Vector3(0, 0, -2.5)),
-    link: "https://makersplace.com/"
+    still: new Texture("videos/deora_thumb.jpg"),
+    video: new VideoClip("videos/deora.mp4"),
+    transform: new Transform({ position: new Vector3(103.68, 3.2, 19), scale: new Vector3(0.6, 0.6, 0.5), rotation: Quaternion.Euler(0, 90, 0) }),
+    trigger: new utils.TriggerBoxShape(new Vector3(8, 8, 6), new Vector3(-4, 0, 0)),
+    link: "https://nft.mattelcreations.com/deora"
   }
 ]

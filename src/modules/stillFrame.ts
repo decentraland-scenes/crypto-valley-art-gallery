@@ -12,7 +12,7 @@ export class StillFrame extends Entity {
           {
             button: ActionButton.ANY,
             showFeedback: true,
-            hoverText: "View on MakersPlace",
+            hoverText: "View on Mattel Creations",
           }
         )
       )
