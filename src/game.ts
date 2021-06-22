@@ -1,13 +1,11 @@
-import resources from "./resources"
-import { loadPictures } from "./modules/nftBuilder"
-
+// Building
 const building = new Entity()
 building.addComponent(
   new Transform({
     position: new Vector3(0, 0, 0),
   })
 )
-building.addComponent(resources.models.building)
+building.addComponent(new GLTFShape("models/building.glb"))
 engine.addEntity(building)
 
 // Music
@@ -18,5 +16,3 @@ streamSource.addComponent(
 streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
 
-// Pictures
-loadPictures(building)
