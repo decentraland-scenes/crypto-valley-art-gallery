@@ -18,6 +18,12 @@ building.addComponent(
 building.addComponent(new GLTFShape("models/building.glb"))
 engine.addEntity(building)
 
+
+// Banners
+const banners = new Entity()
+banners.addComponent(new GLTFShape("models/banners.glb"))
+engine.addEntity(banners)
+
 // Music
 const streamSource = new Entity()
 streamSource.addComponent(
