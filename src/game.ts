@@ -2,11 +2,11 @@ import { videoData } from "./modules/videoData"
 import { VideoFrame } from "./modules/videoFrame"
 
 // Input
-// const input = Input.instance
+const input = Input.instance
 
-// input.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, true, (event) => {
-//   log("Hit Point: ", event.hit.hitPoint)
-// })
+input.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, true, (event) => {
+  log("Hit Point: ", event.hit.hitPoint)
+})
 
 // Building
 const building = new Entity()
