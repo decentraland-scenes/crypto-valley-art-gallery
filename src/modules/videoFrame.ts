@@ -27,7 +27,7 @@ export class VideoFrame extends Entity {
           {
             button: ActionButton.ANY,
             showFeedback: true,
-            hoverText: "View on Mattel Creations",
+            hoverText: "View Live Auction",
             distance: 8
           }
         )
