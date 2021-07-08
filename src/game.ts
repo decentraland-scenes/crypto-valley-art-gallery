@@ -13,7 +13,7 @@ engine.addEntity(building)
 // Music
 const streamSource = new Entity()
 streamSource.addComponent(
-  new AudioStream('https://streaming.radionomy.com/JamendoLounge')
+  new AudioStream('https://streaming.radionomy.com/JamendoLounge') // change to DJ set
 )
 streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
@@ -32,7 +32,7 @@ let waveScreen = new Entity()
 waveScreen.addComponent(new PlaneShape())
 waveScreen.addComponent(
   new Transform({
-    position: new Vector3(57.7, 4.1, 4.3),
+    position: new Vector3(58.4, 4.1, 4.3),
     rotation: Quaternion.Euler(0, 0, 0),
     scale: new Vector3(4.6, 5.85, 4.55),
   })
@@ -78,7 +78,7 @@ let dayScreen = new Entity()
 dayScreen.addComponent(new PlaneShape())
 dayScreen.addComponent(
   new Transform({
-    position: new Vector3(104.3, 4, 19.1),
+    position: new Vector3(104.3, 4, 19.4),
     rotation: Quaternion.Euler(0, 90, 0),
     scale: new Vector3(3.2, 5.8, 3.4),
   })
@@ -249,3 +249,78 @@ Input.instance.subscribe('BUTTON_DOWN', ActionButton.PRIMARY, true, (e) => {
   log(`pos: `, Camera.instance.position)
   log(`rot: `, Camera.instance.rotation)
 })
+
+
+//Under Auction Text
+
+let auctionText = new GLTFShape('models/auctionText.glb')
+let animator = new Animator()
+const playTextClip = new AnimationState('Text')
+const pauseTextClip = new AnimationState('Static')
+animator.addClip(playTextClip)
+animator.addClip(pauseTextClip)
+
+//1
+const KathyText = new Entity()
+KathyText.addComponent(new Transform({
+  position: new Vector3(85.3,5.7,25.05),
+  rotation: Quaternion.Euler(0,180,0),
+  scale: new Vector3(1.5,1.5,1.5)
+}))
+KathyText.addComponent(auctionText)
+KathyText.addComponent(animator)
+playTextClip.play()
+playTextClip.looping = true
+engine.addEntity(KathyText)
+
+//2
+const MBSJQText = new Entity()
+MBSJQText.addComponent(new Transform({
+  position: new Vector3(103.7,4.5,15),
+  rotation: Quaternion.Euler(0,-90,0),
+  scale: new Vector3(1.5,1.5,1.5)
+}))
+MBSJQText.addComponent(auctionText)
+MBSJQText.addComponent(animator)
+playTextClip.play()
+playTextClip.looping = true
+engine.addEntity(MBSJQText)
+
+//3
+const DayText = new Entity()
+DayText.addComponent(new Transform({
+  position: new Vector3(104.3,4.35,23.3),
+  rotation: Quaternion.Euler(0,90,0),
+  scale: new Vector3(1.5,1.5,1.5)
+}))
+DayText.addComponent(auctionText)
+DayText.addComponent(animator)
+playTextClip.play()
+playTextClip.looping = true
+engine.addEntity(DayText)
+
+//4
+const WaveText = new Entity()
+WaveText.addComponent(new Transform({
+  position: new Vector3(53.9,4.05,4.3),
+  rotation: Quaternion.Euler(0,0,0),
+  scale: new Vector3(1.5,1.5,1.5)
+}))
+WaveText.addComponent(auctionText)
+WaveText.addComponent(animator)
+playTextClip.play()
+playTextClip.looping = true
+engine.addEntity(WaveText)
+
+//5
+const rekText = new Entity()
+rekText.addComponent(new Transform({
+  position: new Vector3(59.9,4.35,33.7),
+  rotation: Quaternion.Euler(0,180,0),
+  scale: new Vector3(1.5,1.5,1.5)
+}))
+rekText.addComponent(auctionText)
+rekText.addComponent(animator)
+playTextClip.play()
+playTextClip.looping = true
+engine.addEntity(rekText)
