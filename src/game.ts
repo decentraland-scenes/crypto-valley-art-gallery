@@ -13,9 +13,9 @@ engine.addEntity(building)
 // Music
 const streamSource = new Entity()
 streamSource.addComponent(
-  new AudioStream('https://streaming.radionomy.com/JamendoLounge') // change to DJ set
+  new AudioStream('https://dclteam.s3.us-west-1.amazonaws.com/playboy.mp3') // change to DJ set
 )
-streamSource.getComponent(AudioStream).volume = 0.075
+streamSource.getComponent(AudioStream).volume = 0.1
 engine.addEntity(streamSource)
 
 // Videos
@@ -148,10 +148,12 @@ waveTriggerEntity.addComponent(
     onCameraEnter: () => {
       waveVideoTexture.playing = !waveVideoTexture.playing
       waveVideoTexture.loop = true
+      streamSource.getComponent(AudioStream).volume = 0.1
     },
     onCameraExit: () => {
       waveVideoTexture.playing = false
       // engine.addEntity(placeholderG)
+      streamSource.getComponent(AudioStream).volume = 0.075
     },
     // enableDebug: true,
   })
@@ -170,9 +172,11 @@ rekodeTriggerEntity.addComponent(
     onCameraEnter: () => {
       rekodeVideoTexture.playing = !rekodeVideoTexture.playing
       rekodeVideoTexture.loop = true
+      streamSource.getComponent(AudioStream).volume = 0.1
     },
     onCameraExit: () => {
       rekodeVideoTexture.playing = false
+      streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
     // enableDebug: true,
@@ -192,9 +196,11 @@ dayTriggerEntity.addComponent(
     onCameraEnter: () => {
       dayVideoTexture.playing = !dayVideoTexture.playing
       dayVideoTexture.loop = true
+      streamSource.getComponent(AudioStream).volume = 0.1
     },
     onCameraExit: () => {
       dayVideoTexture.playing = false
+      streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
     // enableDebug: true,
@@ -214,9 +220,11 @@ pbrsTriggerEntity.addComponent(
     onCameraEnter: () => {
       pbsrVideoTexture.playing = !pbsrVideoTexture.playing
       pbsrVideoTexture.loop = true
+      streamSource.getComponent(AudioStream).volume = 0.1
     },
     onCameraExit: () => {
       pbsrVideoTexture.playing = false
+      streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
     // enableDebug: true,
@@ -235,10 +243,12 @@ mbsjqTriggerEntity.addComponent(
   new utils.TriggerComponent(mbsjqTriggerBox, {
     onCameraEnter: () => {
       mbsjqVideoTexture.playing = !mbsjqVideoTexture.playing
+      streamSource.getComponent(AudioStream).volume = 0.1
       mbsjqVideoTexture.loop = true
     },
     onCameraExit: () => {
       mbsjqVideoTexture.playing = false
+      streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
     //  enableDebug: true,
@@ -324,3 +334,110 @@ rekText.addComponent(animator)
 playTextClip.play()
 playTextClip.looping = true
 engine.addEntity(rekText)
+
+
+
+
+import {hud} from './builderhud/BuilderHUD'
+import {Dispenser} from './poap/poap'
+let poapBooth = new Dispenser({position: new Vector3(115,0,14), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)} , "3663");
+hud.attachToEntity(poapBooth)
+
+let transforms:any[] = [
+ 
+]
+let links:any[] = [
+
+]
+
+  let clickable = new Entity("clickable-1")
+  clickable.addComponentOrReplace(new BoxShape())
+  clickable.addComponentOrReplace(new Transform( {position: new Vector3(77,5,25), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(11,6,1)}))
+  clickable.addComponentOrReplace(new BasicMaterial())
+  clickable.getComponent(BasicMaterial).texture = new Texture("images/transparent.png")
+  clickable.getComponent(BasicMaterial).alphaTest = 1
+  clickable.addComponentOrReplace(new OnPointerDown((e)=>{
+  openExternalURL("https://superrare.com/artwork-v2/playboy-bunny-kathy,-miami-beach,-1970--26125")
+}))
+engine.addEntity(clickable)
+hud.attachToEntity(clickable)
+
+
+let clickable2 = new Entity("clickable-2")
+clickable2.addComponentOrReplace(new BoxShape())
+clickable2.addComponentOrReplace(new Transform({position: new Vector3(103.9,4,19), rotation: Quaternion.Euler(0,90,0), scale: new Vector3(4,6,0.6)}))
+clickable2.addComponentOrReplace(new BasicMaterial())
+clickable2.getComponent(BasicMaterial).texture = new Texture("images/transparent.png")
+clickable2.getComponent(BasicMaterial).alphaTest = 1
+clickable2.addComponentOrReplace(new OnPointerDown((e)=>{
+openExternalURL("https://superrare.com/artwork-v2/miami-dance-by-playboy-x-mbsjq-26111")
+}))
+engine.addEntity(clickable2)
+hud.attachToEntity(clickable2)
+
+
+let clickable3 = new Entity("clickable-3")
+clickable3.addComponentOrReplace(new BoxShape())
+clickable3.addComponentOrReplace(new Transform({position: new Vector3(104.5,4,19.4), rotation: Quaternion.Euler(0,90,0), scale: new Vector3(4,6,0.6)}))
+clickable3.addComponentOrReplace(new BasicMaterial())
+clickable3.getComponent(BasicMaterial).texture = new Texture("images/transparent.png")
+clickable3.getComponent(BasicMaterial).alphaTest = 1
+clickable3.addComponentOrReplace(new OnPointerDown((e)=>{
+openExternalURL("https://superrare.com/artwork-v2/miami-day-and-night-by-playboy-x-jon-noorlander-26114")
+}))
+engine.addEntity(clickable3)
+hud.attachToEntity(clickable3)
+
+let clickable4 = new Entity("clickable-4")
+clickable4.addComponentOrReplace(new BoxShape())
+clickable4.addComponentOrReplace(new Transform({position: new Vector3(58.4,4,4.4), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(4.7,6,0.6)}))
+clickable4.addComponentOrReplace(new BasicMaterial())
+clickable4.getComponent(BasicMaterial).texture = new Texture("images/transparent.png")
+clickable4.getComponent(BasicMaterial).alphaTest = 1
+clickable4.addComponentOrReplace(new OnPointerDown((e)=>{
+openExternalURL("https://superrare.com/artwork-v2/ride-the-wave-by-playboy-x-ayla-el-moussa-26113")
+}))
+engine.addEntity(clickable4)
+hud.attachToEntity(clickable4)
+
+let clickable5 = new Entity("clickable-5")
+clickable5.addComponentOrReplace(new BoxShape())
+clickable5.addComponentOrReplace(new Transform({position: new Vector3(54.8,4,33.6), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(4.7,6,0.6)}))
+clickable5.addComponentOrReplace(new BasicMaterial())
+clickable5.getComponent(BasicMaterial).texture = new Texture("images/transparent.png")
+clickable5.getComponent(BasicMaterial).alphaTest = 1
+clickable5.addComponentOrReplace(new OnPointerDown((e)=>{
+openExternalURL("https://superrare.com/artwork-v2/twice-as-vice-by-playboy-x-rek0de-26122")
+}))
+engine.addEntity(clickable5)
+hud.attachToEntity(clickable5)
+
+
+let exhibit = new Entity()
+exhibit.addComponentOrReplace(new GLTFShape("models/banner.glb"))
+exhibit.addComponentOrReplace(new Transform({position: new Vector3(91,0,24.5), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(1,1,1)}))
+engine.addEntity(exhibit)
+hud.attachToEntity(exhibit)
+
+// #1
+const myVideoClip = new VideoClip("sounds/details.mp4")
+const myVideoTexture = new VideoTexture(myVideoClip)
+const myMaterial = new BasicMaterial()
+myMaterial.texture = myVideoTexture
+exhibit.addComponent(myMaterial)
+
+exhibit.addComponent(
+  new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(3,4,2), new Vector3(.5,2,-2)), {
+    onCameraEnter: () => {
+      myVideoTexture.playing = !myVideoTexture.playing
+      streamSource.getComponent(AudioStream).volume = 0.1
+      myVideoTexture.loop = true
+    },
+    onCameraExit: () => {
+      myVideoTexture.playing = false
+      streamSource.getComponent(AudioStream).volume = 0.075
+      // engine.addEntity(placeholderG)
+    },
+      enableDebug: false,
+  })
+)
