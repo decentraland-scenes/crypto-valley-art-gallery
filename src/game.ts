@@ -34,7 +34,7 @@ waveScreen.addComponent(
   new Transform({
     position: new Vector3(58.4, 4.1, 4.3),
     rotation: Quaternion.Euler(0, 0, 0),
-    scale: new Vector3(4.6, 5.85, 4.55),
+    scale: new Vector3(4.8, 6, 4.7),
   })
 )
 waveScreen.addComponent(waveMaterial)
