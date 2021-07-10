@@ -137,8 +137,8 @@ engine.addEntity(mbsjqScreen)
 
 //1
 let waveTriggerBox = new utils.TriggerBoxShape(
-  new Vector3(18, 20, 22),
-  new Vector3(57.7, 3.8, 4.3)
+  new Vector3(18, 20, 7),
+  new Vector3(55, 3.8, 8)
 )
 const waveTriggerEntity = new Entity()
 engine.addEntity(waveTriggerEntity)
@@ -155,13 +155,13 @@ waveTriggerEntity.addComponent(
       // engine.addEntity(placeholderG)
       streamSource.getComponent(AudioStream).volume = 0.075
     },
-    // enableDebug: true,
+     //enableDebug: true,
   })
 )
 
 //2
 let rekodeTriggerBox = new utils.TriggerBoxShape(
-  new Vector3(18, 20, 22),
+  new Vector3(18, 20, 16),
   new Vector3(57.7, 3.8, 31)
 )
 const rekodeTriggerEntity = new Entity()
@@ -179,14 +179,14 @@ rekodeTriggerEntity.addComponent(
       streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
-    // enableDebug: true,
+     //enableDebug: true,
   })
 )
 
 //3
 let dayTriggerBox = new utils.TriggerBoxShape(
-  new Vector3(18, 20, 22),
-  new Vector3(110, 4, 19.1)
+  new Vector3(6, 20, 12),
+  new Vector3(108, 4, 19.1)
 )
 const dayTriggerEntity = new Entity()
 engine.addEntity(dayTriggerEntity)
@@ -203,13 +203,13 @@ dayTriggerEntity.addComponent(
       streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
-    // enableDebug: true,
+     //enableDebug: true,
   })
 )
 
 //4
 let pbrsTriggerBox = new utils.TriggerBoxShape(
-  new Vector3(24, 20, 22),
+  new Vector3(16, 20, 16),
   new Vector3(79, 5.1, 25.7)
 )
 const pbrsTriggerEntity = new Entity()
@@ -227,14 +227,14 @@ pbrsTriggerEntity.addComponent(
       streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
-    // enableDebug: true,
+     //enableDebug: true,
   })
 )
 
 //5
 let mbsjqTriggerBox = new utils.TriggerBoxShape(
-  new Vector3(24, 20, 22),
-  new Vector3(95, 4, 18.88)
+  new Vector3(8, 20, 8),
+  new Vector3(100, 4, 18.88)
 )
 const mbsjqTriggerEntity = new Entity()
 engine.addEntity(mbsjqTriggerEntity)
@@ -251,7 +251,7 @@ mbsjqTriggerEntity.addComponent(
       streamSource.getComponent(AudioStream).volume = 0.075
       // engine.addEntity(placeholderG)
     },
-    //  enableDebug: true,
+       //enableDebug: true,
   })
 )
 
@@ -342,13 +342,6 @@ import {hud} from './builderhud/BuilderHUD'
 import {Dispenser} from './poap/poap'
 let poapBooth = new Dispenser({position: new Vector3(115,0,14), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)} , "3663");
 hud.attachToEntity(poapBooth)
-
-let transforms:any[] = [
- 
-]
-let links:any[] = [
-
-]
 
   let clickable = new Entity("clickable-1")
   clickable.addComponentOrReplace(new BoxShape())
