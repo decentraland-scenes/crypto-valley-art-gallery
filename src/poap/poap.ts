@@ -52,7 +52,7 @@ export class Dispenser extends Entity {
           //this.makeTransaction(poapServer, this.esventName)
           this.handlePoap(this.eventName)
         },
-        { hoverText: "Claim " + this.eventName + " poap", showFeedback:true }
+        { hoverText: "Claim POAP token", showFeedback:true }
       )
     )
     engine.addEntity(button)
