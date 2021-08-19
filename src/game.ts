@@ -2,6 +2,7 @@
 // LEMANS
 
 import { hud } from "./builderhud/BuilderHUD"
+import { Dispenser } from "./poap/poap"
 
 
 
@@ -333,6 +334,8 @@ engine.addEntity(lemans19)
 lemans19.setParent(_scene)
 
 
+let poapbooth = new Dispenser({position: new Vector3(115,0.15,14.4), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)}, "","5893")
+hud.attachToEntity(poapbooth)
 
 
 
