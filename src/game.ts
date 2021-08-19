@@ -338,9 +338,41 @@ let poapbooth = new Dispenser({position: new Vector3(115,0.15,14.4), rotation: Q
 hud.attachToEntity(poapbooth)
 
 
+let playedVideo = false
+
+const screenHolder = new Entity
+screenHolder.setParent(_scene)
+screenHolder.addComponent(new Transform({position: new Vector3(55.8,12,27), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1,1)}))
+screenHolder.addComponent(new GLTFShape('models/ScreenHolder.glb'))
+let animator = new Animator()
+screenHolder.addComponent(animator)
+let clipShow = new AnimationState('Show')
+let clipHide = new AnimationState('Hide')
+let clipStatic = new AnimationState('Static')
+let clipHidden = new AnimationState('Hidden')
+animator.addClip(clipShow)
+animator.addClip(clipHide)
+animator.addClip(clipStatic)
+animator.addClip(clipHidden)
+clipHidden.play()
+clipHidden.looping = true 
+engine.addEntity(screenHolder)
+hud.attachToEntity(screenHolder)
+
+clipHidden.playing = false
+clipHidden.looping = false
+clipShow.looping = false
 
 
-
+var videoTexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/lemans.mp4"))
+var screen = new Entity()
+screen.addComponent(new PlaneShape())
+screen.addComponent(new BasicMaterial())
+screen.getComponent(BasicMaterial).texture = videoTexture
+screen.addComponent(new Transform({position: new Vector3(56,8.1,27), rotation: Quaternion.Euler(0,90,0), scale: new Vector3(0,0,0)}))
+engine.addEntity(screen)
+screen.setParent(_scene)
+videoTexture.playing = false
 
 
 
@@ -353,3 +385,48 @@ hud.attachToEntity(poapbooth)
 ///flash1W.play()
 ///flash1W.looping = true 
 ///engine.addEntity(luzColumnas)
+
+
+let canvas = new UICanvas()
+const playvideo = new UIText(canvas)
+playvideo.height = 50
+playvideo.width = 100
+playvideo.vAlign = "bottom"
+playvideo.hAlign = "center"
+playvideo.value = "Press E to play video"
+playvideo.fontSize = 20
+
+Input.instance.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, false, ()=>{
+  if(!playedVideo){
+    playedVideo = true
+    play()
+  }
+})
+
+export function play(){
+  clipHidden.playing = false
+  clipHidden.looping = false
+  clipShow.looping = false
+  clipShow.play()
+  playvideo.visible = false
+  var delay = new Entity()
+  engine.addSystem(new DelaySystem())
+}
+
+export class DelaySystem{
+
+  timer = 3
+  time = 3
+
+  update(dt:number){
+    if(this.timer > 0){
+      this.timer -= dt
+    }
+    else{
+      screen.getComponent(Transform).scale = new Vector3(12,6.75,1)
+      videoTexture.playing = true
+      videoTexture.volume = .8
+      engine.removeSystem(this)
+    }
+  }
+}

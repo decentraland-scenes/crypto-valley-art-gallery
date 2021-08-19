@@ -63,10 +63,9 @@ export class Dispenser extends Entity {
     poapImage.addComponent(new PlaneShape())
     poapImage.addComponent(new Material())
 
-    log('event name', this.eventName)
     var image_url = await getPOAPImage(this.eventName)
     poapImage.getComponent(Material).albedoTexture = new Texture(image_url)
-    poapImage.getComponent(Material).alphaTexture = new Texture("textures/circle_mask.png")
+    poapImage.getComponent(Material).alphaTexture = new Texture("src/poap/circle_mask.png")
     poapImage.addComponent(new Transform({
       position: new Vector3(0,1.75,0),
       rotation: Quaternion.Euler(0,180,180),
