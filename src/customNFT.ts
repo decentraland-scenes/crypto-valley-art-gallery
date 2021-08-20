@@ -1,5 +1,4 @@
 import * as utils from '@dcl/ecs-scene-utils'
-import { hud } from './builderhud/BuilderHUD'
 
 export class CustomNFT extends Entity implements ISystem{
     
@@ -23,8 +22,6 @@ export class CustomNFT extends Entity implements ISystem{
         this.addComponent(new Material())
         this.getComponent(Material).albedoColor = Color4.White()
 
-        hud.attachToEntity(this)
-
         this.contentEntity = new Entity("content-"+nft.title)
         this.contentEntity.addComponent(new PlaneShape())
         this.contentEntity.addComponent(new Transform({position: new Vector3(-0.007,0.55,-0.025), rotation: nft.type == "video" ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0), scale: new Vector3(1,1,1)}))
@@ -33,7 +30,9 @@ export class CustomNFT extends Entity implements ISystem{
         
         if(nft.popup){
             this.contentEntity.addComponent(new OnPointerDown(()=>{
-                openExternalURL(nft.link)
+                openExternalURL(nft.location)
+            },{
+                showFeedback: true, hoverText:"Visit Automobilist"
             }))
         }
         

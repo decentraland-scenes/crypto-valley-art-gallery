@@ -1,7 +1,5 @@
 //////////////////////////
 // LEMANS
-
-import { hud } from "./builderhud/BuilderHUD"
 import { CustomNFT } from "./customNFT"
 import { Dispenser } from "./poap/poap"
 import resources from "./resources"
@@ -17,7 +15,6 @@ const transform = new Transform({
   scale: new Vector3(1, 1, 1)
 })
 _scene.addComponentOrReplace(transform)
-hud.attachToEntity(_scene)
 
 
 
@@ -39,11 +36,10 @@ lemans1.addComponent(new Transform({
     }))
 lemans1.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans1)
 lemans1.setParent(_scene)
 
@@ -55,11 +51,10 @@ lemans2.addComponent(new Transform({
     }))
 lemans2.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans2)
 lemans2.setParent(_scene)
 
@@ -71,11 +66,10 @@ lemans3.addComponent(new Transform({
     }))
 lemans3.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans3)
 lemans3.setParent(_scene)
 
@@ -87,11 +81,10 @@ lemans4.addComponent(new Transform({
     }))
 lemans4.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans4)
 lemans4.setParent(_scene)
 
@@ -103,11 +96,10 @@ lemans5.addComponent(new Transform({
     }))
 lemans5.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans5)
 lemans5.setParent(_scene)
 
@@ -119,11 +111,10 @@ lemans6.addComponent(new Transform({
     }))
 lemans6.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans6)
 lemans6.setParent(_scene)
 
@@ -135,11 +126,10 @@ lemans7.addComponent(new Transform({
     }))
 lemans7.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans7)
 lemans7.setParent(_scene)
 
@@ -151,11 +141,10 @@ lemans8.addComponent(new Transform({
     }))
 lemans8.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans8)
 lemans8.setParent(_scene)
 
@@ -167,11 +156,10 @@ lemans9.addComponent(new Transform({
     }))
 lemans9.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans9)
 lemans9.setParent(_scene)
 
@@ -183,11 +171,10 @@ lemans10.addComponent(new Transform({
     }))
 lemans10.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans10)
 lemans10.setParent(_scene)
 
@@ -199,11 +186,10 @@ lemans11.addComponent(new Transform({
     }))
 lemans11.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans11)
 lemans11.setParent(_scene)
 
@@ -215,11 +201,10 @@ lemans12.addComponent(new Transform({
     }))
 lemans12.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans12)
 lemans12.setParent(_scene)
 
@@ -231,11 +216,10 @@ lemans13.addComponent(new Transform({
     }))
 lemans13.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans13)
 lemans13.setParent(_scene)
 
@@ -247,11 +231,10 @@ lemans14.addComponent(new Transform({
     }))
 lemans14.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
+    openExternalURL("https://www.bitski.com/automobilist")
+  },{
+    showFeedback: true, hoverText:"Visit Automobilist"
+}))
 engine.addEntity(lemans14)
 lemans14.setParent(_scene)
 
@@ -261,13 +244,6 @@ lemans15.addComponent(new Transform({
     position: new Vector3(8, 0, 8), 
     scale: new Vector3(1, 1, 1)
     }))
-lemans15.addComponent(
-  new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
 engine.addEntity(lemans15)
 lemans15.setParent(_scene)
 
@@ -277,13 +253,7 @@ lemans16.addComponent(new Transform({
     position: new Vector3(8, 0, 8), 
     scale: new Vector3(1, 1, 1)
     }))
-lemans16.addComponent(
-  new OnPointerDown((e) => {
-    //stopAllSounds()
-    //video3.getComponent(Transform).scale = (vid3.show)
-    //vid3.texture.playing = true
-  })
-)
+
 engine.addEntity(lemans16)
 lemans16.setParent(_scene)
 
@@ -293,13 +263,6 @@ lemans17.addComponent(new Transform({
     position: new Vector3(8, 0, 8), 
     scale: new Vector3(1, 1, 1)
     }))
-lemans17.addComponent(
-  new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
 engine.addEntity(lemans17)
 lemans17.setParent(_scene)
 
@@ -309,13 +272,6 @@ lemans18.addComponent(new Transform({
     position: new Vector3(8, 0, 8), 
     scale: new Vector3(1, 1, 1)
     }))
-lemans18.addComponent(
-  new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
-  })
-)
 engine.addEntity(lemans18)
 lemans18.setParent(_scene)
 
@@ -325,121 +281,28 @@ lemans19.addComponent(new Transform({
     position: new Vector3(8, 0, 8), 
     scale: new Vector3(1, 1, 1)
     }))
-lemans19.addComponent(
-  new OnPointerDown((e) => {
-    //stopAllSounds()
-   // video2.getComponent(Transform).scale = (vid2.show)
-    //vid2.texture.playing = true
-  })
-)
 engine.addEntity(lemans19)
 lemans19.setParent(_scene)
 
 
 let poapbooth = new Dispenser({position: new Vector3(115,0.15,14.4), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)}, "","5893")
-hud.attachToEntity(poapbooth)
-
-/*
-
-let vid1 = {texture: new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/lemans.mp4")), index: 0, transform:{position: new Vector3(87.04,5.16,33.75), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(19,8.1,1)}}
-
-let video = new Entity("video1")
-video.addComponent(new PlaneShape())
-video.addComponent(new BasicMaterial())
-video.getComponent(BasicMaterial).texture = vid1.texture
-video.addComponent(new Transform(vid1.transform))
-engine.addEntity(video)
-video.setParent(_scene)
-vid1.texture.playing = false
-video.addComponent(new OnPointerDown(()=>{
-stopAllSounds()
-vid1.texture.playing = true
-}))
-hud.attachToEntity(video)
-
-
-let vid2 = {texture: new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/lemans-legend.mp4")), index: 0, transform:{position: new Vector3(60.63,4.11,41.51), rotation: Quaternion.Euler(0,180,0), scale: Vector3.Zero()}, show:new Vector3(6.4,6.92,1) }
-
-let video2 = new Entity("video2")
-video2.addComponent(new PlaneShape())
-video2.addComponent(new BasicMaterial())
-video2.getComponent(BasicMaterial).texture = vid2.texture
-video2.addComponent(new Transform(vid2.transform))
-engine.addEntity(video2)
-video2.setParent(_scene)
-vid2.texture.playing = false
-video2.addComponent(new OnPointerDown(()=>{
-stopAllSounds()
-vid2.texture.playing = true
-}))
-hud.attachToEntity(video2)
-
-
-let vid3 = {texture: new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/gulf360.mp4")), index: 0, transform:{position: new Vector3(104.083,4.08,12.37), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(0,0,0)}, show: new Vector3(7.75,6.83,1) }
-
-let video3 = new Entity("video3")
-video3.addComponent(new PlaneShape())
-video3.addComponent(new BasicMaterial())
-video3.getComponent(BasicMaterial).texture = vid3.texture
-video3.addComponent(new Transform(vid3.transform))
-engine.addEntity(video3)
-video3.setParent(_scene)
-vid3.texture.playing = false
-video3.addComponent(new OnPointerDown(()=>{
-stopAllSounds()
-vid3.texture.playing = true
-}))
-hud.attachToEntity(video3)
-
-*/
-
-/*
-var bigvideo = new Entity('big video')
-bigvideo.addComponent(new PlaneShape())
-bigvideo.addComponent(new BasicMaterial())
-bigvideo.getComponent(BasicMaterial).texture = bigvideotext
-bigvideo.addComponent(new Transform({position: new Vector3(87.04,5.16,33.75), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(19,8.1,1)}))
-engine.addEntity(bigvideo)
-bigvideo.setParent(_scene)
-videoTexture.playing = false
-bigvideo.addComponent(new OnPointerDown(()=>{
-  stopAllSounds()
-  bigvideotext.playing = true
-}))
-hud.attachToEntity(bigvideo)
-
-
-var mainvid = new Entity('big video')
-bigvideo.addComponent(new PlaneShape())
-bigvideo.addComponent(new BasicMaterial())
-bigvideo.getComponent(BasicMaterial).texture = bigvideotext
-bigvideo.addComponent(new Transform({position: new Vector3(87.04,5.16,33.75), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(19,8.1,1)}))
-engine.addEntity(bigvideo)
-bigvideo.setParent(_scene)
-videoTexture.playing = false
-bigvideo.addComponent(new OnPointerDown(()=>{
-  stopAllSounds()
-  bigvideotext.playing = true
-}))
-hud.attachToEntity(bigvideo)
-
-
-*/
-
-
-/*
-
-function stopAllSounds(){
-    vid1.texture.playing = false
-    vid2.texture.playing = false
-    vid3.texture.playing = false
-
-}
-
-*/
 
 
   for(var i = 0; i < resources.nfts.length; i++){
     var nft = resources.nfts[i]
     let newNFT = new CustomNFT(nft)
 }
+
+let bg1 = new Entity("bg1")
+bg1.addComponent(new PlaneShape())
+bg1.addComponent(new Material())
+bg1.getComponent(Material).albedoColor = Color4.Black()
+bg1.addComponent(new Transform({position: new Vector3(78.923,5.14,25.77), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(18,7.7,1)}))
+engine.addEntity(bg1)
+
+let bg2 = new Entity("bg2")
+bg2.addComponent(new PlaneShape())
+bg2.addComponent(new Material())
+bg2.getComponent(Material).albedoColor = Color4.Black()
+bg2.addComponent(new Transform({position: new Vector3(64.005,3.54,37.27), rotation: Quaternion.Euler(0,90,0), scale: new Vector3(5,4.1,1)}))
+engine.addEntity(bg2)
