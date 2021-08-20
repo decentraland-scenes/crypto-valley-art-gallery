@@ -2,7 +2,9 @@
 // LEMANS
 
 import { hud } from "./builderhud/BuilderHUD"
+import { CustomNFT } from "./customNFT"
 import { Dispenser } from "./poap/poap"
+import resources from "./resources"
 
 
 
@@ -277,9 +279,9 @@ lemans16.addComponent(new Transform({
     }))
 lemans16.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
+    //stopAllSounds()
+    //video3.getComponent(Transform).scale = (vid3.show)
+    //vid3.texture.playing = true
   })
 )
 engine.addEntity(lemans16)
@@ -325,9 +327,9 @@ lemans19.addComponent(new Transform({
     }))
 lemans19.addComponent(
   new OnPointerDown((e) => {
-    openNFTDialog(
-      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536"
-    )
+    //stopAllSounds()
+   // video2.getComponent(Transform).scale = (vid2.show)
+    //vid2.texture.playing = true
   })
 )
 engine.addEntity(lemans19)
@@ -337,96 +339,107 @@ lemans19.setParent(_scene)
 let poapbooth = new Dispenser({position: new Vector3(115,0.15,14.4), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)}, "","5893")
 hud.attachToEntity(poapbooth)
 
+/*
 
-let playedVideo = false
+let vid1 = {texture: new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/lemans.mp4")), index: 0, transform:{position: new Vector3(87.04,5.16,33.75), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(19,8.1,1)}}
 
-const screenHolder = new Entity
-screenHolder.setParent(_scene)
-screenHolder.addComponent(new Transform({position: new Vector3(55.8,12,27), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1,1)}))
-screenHolder.addComponent(new GLTFShape('models/ScreenHolder.glb'))
-let animator = new Animator()
-screenHolder.addComponent(animator)
-let clipShow = new AnimationState('Show')
-let clipHide = new AnimationState('Hide')
-let clipStatic = new AnimationState('Static')
-let clipHidden = new AnimationState('Hidden')
-animator.addClip(clipShow)
-animator.addClip(clipHide)
-animator.addClip(clipStatic)
-animator.addClip(clipHidden)
-clipHidden.play()
-clipHidden.looping = true 
-engine.addEntity(screenHolder)
-hud.attachToEntity(screenHolder)
-
-clipHidden.playing = false
-clipHidden.looping = false
-clipShow.looping = false
+let video = new Entity("video1")
+video.addComponent(new PlaneShape())
+video.addComponent(new BasicMaterial())
+video.getComponent(BasicMaterial).texture = vid1.texture
+video.addComponent(new Transform(vid1.transform))
+engine.addEntity(video)
+video.setParent(_scene)
+vid1.texture.playing = false
+video.addComponent(new OnPointerDown(()=>{
+stopAllSounds()
+vid1.texture.playing = true
+}))
+hud.attachToEntity(video)
 
 
-var videoTexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/lemans.mp4"))
-var screen = new Entity()
-screen.addComponent(new PlaneShape())
-screen.addComponent(new BasicMaterial())
-screen.getComponent(BasicMaterial).texture = videoTexture
-screen.addComponent(new Transform({position: new Vector3(56,8.1,27), rotation: Quaternion.Euler(0,90,0), scale: new Vector3(0,0,0)}))
-engine.addEntity(screen)
-screen.setParent(_scene)
+let vid2 = {texture: new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/lemans-legend.mp4")), index: 0, transform:{position: new Vector3(60.63,4.11,41.51), rotation: Quaternion.Euler(0,180,0), scale: Vector3.Zero()}, show:new Vector3(6.4,6.92,1) }
+
+let video2 = new Entity("video2")
+video2.addComponent(new PlaneShape())
+video2.addComponent(new BasicMaterial())
+video2.getComponent(BasicMaterial).texture = vid2.texture
+video2.addComponent(new Transform(vid2.transform))
+engine.addEntity(video2)
+video2.setParent(_scene)
+vid2.texture.playing = false
+video2.addComponent(new OnPointerDown(()=>{
+stopAllSounds()
+vid2.texture.playing = true
+}))
+hud.attachToEntity(video2)
+
+
+let vid3 = {texture: new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/gulf360.mp4")), index: 0, transform:{position: new Vector3(104.083,4.08,12.37), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(0,0,0)}, show: new Vector3(7.75,6.83,1) }
+
+let video3 = new Entity("video3")
+video3.addComponent(new PlaneShape())
+video3.addComponent(new BasicMaterial())
+video3.getComponent(BasicMaterial).texture = vid3.texture
+video3.addComponent(new Transform(vid3.transform))
+engine.addEntity(video3)
+video3.setParent(_scene)
+vid3.texture.playing = false
+video3.addComponent(new OnPointerDown(()=>{
+stopAllSounds()
+vid3.texture.playing = true
+}))
+hud.attachToEntity(video3)
+
+*/
+
+/*
+var bigvideo = new Entity('big video')
+bigvideo.addComponent(new PlaneShape())
+bigvideo.addComponent(new BasicMaterial())
+bigvideo.getComponent(BasicMaterial).texture = bigvideotext
+bigvideo.addComponent(new Transform({position: new Vector3(87.04,5.16,33.75), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(19,8.1,1)}))
+engine.addEntity(bigvideo)
+bigvideo.setParent(_scene)
 videoTexture.playing = false
+bigvideo.addComponent(new OnPointerDown(()=>{
+  stopAllSounds()
+  bigvideotext.playing = true
+}))
+hud.attachToEntity(bigvideo)
 
 
+var mainvid = new Entity('big video')
+bigvideo.addComponent(new PlaneShape())
+bigvideo.addComponent(new BasicMaterial())
+bigvideo.getComponent(BasicMaterial).texture = bigvideotext
+bigvideo.addComponent(new Transform({position: new Vector3(87.04,5.16,33.75), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(19,8.1,1)}))
+engine.addEntity(bigvideo)
+bigvideo.setParent(_scene)
+videoTexture.playing = false
+bigvideo.addComponent(new OnPointerDown(()=>{
+  stopAllSounds()
+  bigvideotext.playing = true
+}))
+hud.attachToEntity(bigvideo)
 
-/// Para meter una animación: 
 
-///const luzColumnas = new Entity()
-///luzColumnas.addComponent(transform) 
-///const luzColumnasAnimator = new Animator()
-///luzColumnasAnimator.addClip(flash1W)
-///flash1W.play()
-///flash1W.looping = true 
-///engine.addEntity(luzColumnas)
+*/
 
 
-let canvas = new UICanvas()
-const playvideo = new UIText(canvas)
-playvideo.height = 50
-playvideo.width = 100
-playvideo.vAlign = "bottom"
-playvideo.hAlign = "center"
-playvideo.value = "Press E to play video"
-playvideo.fontSize = 20
+/*
 
-Input.instance.subscribe("BUTTON_DOWN", ActionButton.PRIMARY, false, ()=>{
-  if(!playedVideo){
-    playedVideo = true
-    play()
-  }
-})
+function stopAllSounds(){
+    vid1.texture.playing = false
+    vid2.texture.playing = false
+    vid3.texture.playing = false
 
-export function play(){
-  clipHidden.playing = false
-  clipHidden.looping = false
-  clipShow.looping = false
-  clipShow.play()
-  playvideo.visible = false
-  var delay = new Entity()
-  engine.addSystem(new DelaySystem())
 }
 
-export class DelaySystem{
+*/
 
-  timer = 3
-  time = 3
 
-  update(dt:number){
-    if(this.timer > 0){
-      this.timer -= dt
-    }
-    else{
-      screen.getComponent(Transform).scale = new Vector3(12,6.75,1)
-      videoTexture.playing = true
-      videoTexture.volume = .8
-      engine.removeSystem(this)
-    }
-  }
+  for(var i = 0; i < resources.nfts.length; i++){
+    var nft = resources.nfts[i]
+    let newNFT = new CustomNFT(nft)
 }
