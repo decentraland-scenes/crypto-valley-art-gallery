@@ -1,10 +1,12 @@
 {
   "display": {
-    "title": "Crypto Valley Art Gallery",
+    "title": "DCL Scene",
+    "description": "My new Decentraland project",
+    "navmapThumbnail": "images/scene-thumbnail.png",
     "favicon": "favicon_asset"
   },
   "contact": {
-    "name": "toonpunk",
+    "name": "author-name",
     "email": ""
   },
   "owner": "",
@@ -17,16 +19,7 @@
     ],
     "base": "52,22"
   },
-  "communications": {
-    "type": "webrtc",
-    "signalling": "https://signalling-01.decentraland.org"
-  },
-  "policy": {
-    "contentRating": "E",
-    "fly": true,
-    "voiceEnabled": true,
-    "blacklist": []
-  },
+  "requiredPermissions": [],
   "main": "bin/game.js",
   "tags": [],
   "spawnPoints": [
@@ -44,5 +37,6 @@
         "z": 8
       }
     }
-  ]
+  ],
+  "featureToggles": {}
 }

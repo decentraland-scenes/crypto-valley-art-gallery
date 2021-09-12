@@ -1,7 +1,7 @@
 {
-  "name": "crypto-valley-art-gallery",
+  "name": "dcl-project",
   "version": "1.0.0",
-  "description": "Crypto Valley Art Gallery",
+  "description": "My new Decentraland project",
   "scripts": {
     "start": "dcl start",
     "build": "build-ecs",
@@ -11,6 +11,6 @@
     "ecs:install-next": "npm install --save-dev decentraland-ecs@next"
   },
   "devDependencies": {
-    "decentraland-ecs": "next"
+    "decentraland-ecs": "latest"
   }
 }

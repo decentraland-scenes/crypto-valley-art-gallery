@@ -1,22 +1,9 @@
-import resources from "./resources"
-import { loadPictures } from "./modules/nftBuilder"
-
 const building = new Entity()
-building.addComponent(
-  new Transform({
-    position: new Vector3(0, 0, 0),
-  })
-)
-building.addComponent(resources.models.building)
+building.addComponent(new Transform({position: new Vector3(0, 0, 0)}))
+building.addComponent(new GLTFShape('models/building.glb'))
 engine.addEntity(building)
 
-// Music
-const streamSource = new Entity()
-streamSource.addComponent(
-  new AudioStream("https://streaming.radionomy.com/JamendoLounge")
-)
-streamSource.getComponent(AudioStream).volume = 0.075
-engine.addEntity(streamSource)
-
-// Pictures
-loadPictures(building)
+const car = new Entity()
+car.addComponent(new Transform({position: new Vector3(104, 0.2, 19)}))
+car.addComponent(new GLTFShape('models/car.glb'))
+engine.addEntity(car)
