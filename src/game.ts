@@ -42,6 +42,7 @@ export class VideoScreen extends Entity implements ISystem{
         this.addComponent(new Material())
         this.addComponent(new PlaneShape())
         this.getComponent(Material).albedoTexture = this.texture
+        this.texture.loop = loop
 
         this.texture.playing = true
         let d = new Entity()
@@ -98,14 +99,14 @@ export class VideoScreen extends Entity implements ISystem{
     }
 }
 
-new VideoScreen("white dame", DIRECTION.NORTH, "https://dclteam.s3.us-west-1.amazonaws.com/white_dame.mp4", {position: new Vector3(104.84,4.09,33.74), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(10.3,5.75,1)}, false, 0, undefined, true, "https://superrare.com/automobilist")
+new VideoScreen("white dame", DIRECTION.NORTH, "https://dclteam.s3.us-west-1.amazonaws.com/white_dame.mp4", {position: new Vector3(104.84,4.09,33.74), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(10.3,5.75,1)}, true, 0, undefined, true, "https://superrare.com/automobilist")
 new VideoScreen("3500 gt", DIRECTION.NORTH, "https://dclteam.s3.us-west-1.amazonaws.com/3500gt.mp4", {position: new Vector3(72.98,5.09,25.07), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(4.8,4.8,1)}, true, 6, new Vector3(0, -3,-5), true, "https://superrare.com/automobilist")
 new VideoScreen("250 f", DIRECTION.NORTH, "https://dclteam.s3.us-west-1.amazonaws.com/250f.mp4", {position: new Vector3(79,5.09,25.07), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(4.8,4.8,1)}, true, 7,  new Vector3(0, -3,-5), true, "https://superrare.com/automobilist")
 new VideoScreen("mc20", DIRECTION.NORTH, "https://dclteam.s3.us-west-1.amazonaws.com/mc20.mp4", {position: new Vector3(85.16,5.09,25.07), rotation: Quaternion.Euler(0,180,0), scale: new Vector3(4.8,4.8,1)}, true, 7, new Vector3(0, -3,-5), true, "https://superrare.com/automobilist")
 
 
 
-let poap = new Dispenser({position: new Vector3(115.16,0.09,13.07), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)}, "", "7475")
+let poap = new Dispenser({position: new Vector3(115.16,0.09,13.07), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)}, 1631559600, "7475")
 hud.attachToEntity(poap)
 
 
@@ -121,7 +122,7 @@ export class ClickableArea extends Entity{
         this.addComponent(new Transform(transform))
         this.addComponent(new OnPointerDown(()=>{
             openExternalURL(link)
-        }))
+        }, {showFeedback: true, hoverText: "Automobilist Superrare"}))
         engine.addEntity(this)
         hud.attachToEntity(this)
     }
@@ -135,8 +136,11 @@ hud.attachToEntity(screen)
 screen.addComponent(new Animator())
 screen.getComponent(Animator).addClip(new AnimationState("Show"))
 screen.getComponent(Animator).getClip("Show").looping = false
-screen.getComponent(Animator).getClip("Show").play()
+screen.getComponent(Animator).getClip("Show").stop()
 
+
+let livetexture =new VideoTexture(new VideoClip("https://lkdcl.co/dcl/streams/live/cryptovalleygallery/index.m3u8"))
+livetexture.volume = 0
 
 let livescreen = new Entity("live screen")
 livescreen.addComponent(new PlaneShape())
@@ -146,16 +150,20 @@ engine.addEntity(livescreen)
 hud.attachToEntity(livescreen)
 livescreen.getComponent(PlaneShape).visible = false
 
-let livedelay = new Entity()
-engine.addEntity(livedelay)
-livedelay.addComponent(new utils.Delay(3500,()=>{
-    livescreen.getComponent(PlaneShape).visible = true
-    let livetexture = new VideoTexture(new VideoClip("https://lkdcl.co/dcl/streams/live/cryptovalleygallery/index.m3u8"))
-    livescreen.getComponent(Material).albedoTexture = livetexture
-    livetexture.playing = true
+
+let livesceenaudio = new Entity("livescreen audio")
+livesceenaudio.addComponent(new Transform({position: new Vector3(53.11,3.44,20), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(22,5,31)}))
+livesceenaudio.addComponent(new utils.TriggerComponent(new utils.TriggerBoxShape(new Vector3(22,5,31), Vector3.Zero()),{
+    enableDebug: false,
+    onCameraEnter:()=>{
+        livetexture.volume = 1
+    },
+    onCameraExit:()=>{
+        livetexture.volume = 0
+    }
 }))
-
-
+engine.addEntity(livesceenaudio)
+hud.attachToEntity(livesceenaudio)
 
 new ClickableArea("click1", {position: new Vector3(102.6,3.8,4.4), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(14,6,1)}, "https://superrare.com/automobilist" )
 new ClickableArea("click2", {position: new Vector3(114,6.1,5.9), rotation: Quaternion.Euler(0,315,0), scale: new Vector3(3.2,1.8,0.3)}, "https://superrare.com/automobilist" )
@@ -165,8 +173,6 @@ new ClickableArea("click5", {position: new Vector3(90.2,5.9,8.2), rotation: Quat
 new ClickableArea("click6", {position: new Vector3(90.2,4.4,8.2), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(4,1.22,1)}, "https://superrare.com/automobilist" )
 new ClickableArea("click7", {position: new Vector3(90.2,2.6,8.2), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(4,1.22,1)}, "https://superrare.com/automobilist" )
 
-
-
 new ClickableArea("click8", {position: new Vector3(56.6,3.8,4.4), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(14,6,1)}, "https://superrare.com/automobilist" )
 new ClickableArea("click9",  {position: new Vector3(67.3,3,8.4), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(3.9,2,1)}, "https://superrare.com/automobilist" )
 new ClickableArea("click10", {position: new Vector3(67.3,5.4,8.2), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(3.9,2,1)}, "https://superrare.com/automobilist" )
@@ -174,3 +180,26 @@ new ClickableArea("click11", {position: new Vector3(43.7,5.4,5.9), rotation: Qua
 new ClickableArea("click12", {position: new Vector3(43.7,3.1,5.9), rotation: Quaternion.Euler(0,225,0), scale: new Vector3(3.9,2,1)}, "https://superrare.com/automobilist" )
 new ClickableArea("click13", {position: new Vector3(52.6,3.8,33.4), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(14,6,1)}, "https://superrare.com/automobilist" )
 
+
+let livetime = 1631631609
+function checkTime(){
+    if(livetime <= Math.floor(Date.now() / 1000)){
+        log('need to show live screen')
+        screen.getComponent(Animator).getClip("Show").looping = false
+        screen.getComponent(Animator).getClip("Show").play()
+        let livedelay = new Entity()
+        engine.addEntity(livedelay)
+        livedelay.addComponent(new utils.Delay(3500,()=>{
+            livescreen.getComponent(PlaneShape).visible = true
+            livescreen.getComponent(Material).albedoTexture = livetexture
+            livetexture.playing = true
+        }))
+        engine.removeEntity(checkTimer)
+    }
+}
+
+let checkTimer = new Entity()
+engine.addEntity(checkTimer)
+checkTimer.addComponent(new utils.Interval(1000,()=>{
+    checkTime()
+}))

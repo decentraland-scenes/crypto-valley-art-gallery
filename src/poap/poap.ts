@@ -1,4 +1,4 @@
-import { Delay, KeepRotatingComponent } from "@dcl/ecs-scene-utils"
+import { Delay, KeepRotatingComponent, Interval } from "@dcl/ecs-scene-utils"
 import * as UI from "@dcl/ui-scene-utils"
 
 import { getUserData } from "@decentraland/Identity"
@@ -14,10 +14,15 @@ export class Dispenser extends Entity {
   clickable: boolean = true
   timeToClickable: number = 0
   poapServer = ""
+  interval:Entity
+  eventTime = 0
+  eventLive = false
 
-  constructor(transform: TranformConstructorArgs, poapServer: string, eventName: string) {
+  constructor(transform: TranformConstructorArgs, eventTime: number, eventName: string) {
     super("poapbooth")
     engine.addEntity(this)
+
+    this.eventTime = eventTime
 
     this.addComponent(new GLTFShape("src/poap/poap_dispenser.glb"))
     this.addComponent(new Transform(transform))
@@ -51,18 +56,37 @@ export class Dispenser extends Entity {
             return
           }
           this.clickable = false
-          
-          log('claiming poap --> ' + this.eventName)
-          button.getComponent(Animator).getClip("Action").stop()
-          button.getComponent(Animator).getClip("Action").play()
-          //sceneMessageBus.emit('activatePoap', {})
-          //this.makeTransaction(poapServer, this.esventName)
-          this.handlePoap(this.eventName)
+
+          if(this.eventLive){
+            log('claiming poap --> ' + this.eventName)
+            button.getComponent(Animator).getClip("Action").stop()
+            button.getComponent(Animator).getClip("Action").play()
+            //sceneMessageBus.emit('activatePoap', {})
+            //this.makeTransaction(poapServer, this.esventName)
+            this.handlePoap(this.eventName)
+          }
+          else{
+            UI.displayAnnouncement("Event is not live")
+            this.clickable = true
+          }
         },
         { hoverText: "Claim POAP token", showFeedback:true }
       )
     )
     engine.addEntity(button)
+
+    this.interval = new Entity("")
+    engine.addEntity(this.interval)
+    this.interval.addComponent(new Interval(1000,()=>{
+        this.checkEventTime()
+    }))
+  }
+
+  checkEventTime(){
+    if(this.eventTime <= Math.floor(Date.now() / 1000)){
+      this.eventLive = true
+      engine.removeEntity(this.interval)
+    }
   }
 
   async poapImage(parent:Entity){
@@ -103,7 +127,7 @@ export class Dispenser extends Entity {
   async handlePoap(eventName: string) {
     log(eventName)
     const userData = await getUserData()
-    if (!userData.hasConnectedWeb3) {
+    if (!userData || !userData.hasConnectedWeb3) {
       log("no wallet")
       return
     }
@@ -150,7 +174,7 @@ export class Dispenser extends Entity {
 
   async makeTransaction(poapServer: string, event: string) {
     const userData = await getUserData()
-    if (!userData.hasConnectedWeb3) {
+    if (!userData || !userData.hasConnectedWeb3) {
       log("no wallet")
       return
     }
@@ -161,9 +185,7 @@ export class Dispenser extends Entity {
     let headers = { "Content-Type": "application/json" }
     let body = JSON.stringify({
       address: userData.publicKey,
-      catalyst: realm.domain,
       event: event,
-      room: realm.layer,
     })
 
     try {
