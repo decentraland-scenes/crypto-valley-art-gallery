@@ -4,7 +4,7 @@ export const videoData = [
   // TV STREAM
   {
     frame: new GLTFShape("models/vidFrame1024x1024.glb"),
-    frameSize: new Vector3(12, 7, 1),
+    frameSize: new Vector3(12.1, 7, 1),
     still: new Texture("images/MocaShanghai_Logo.jpg"),
     video: new VideoClip(""),
     transform: new Transform({ position: new Vector3(43.5, 8.8, 21.5), scale: new Vector3(0.7, 0.7, 0.5), rotation: Quaternion.Euler(-15, -90, 0)}),
