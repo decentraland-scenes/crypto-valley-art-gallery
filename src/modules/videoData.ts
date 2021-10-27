@@ -8,7 +8,7 @@ export const videoData = [
     still: new Texture("images/MocaShanghai_Logo.jpg"),
     video: new VideoClip(""),
     transform: new Transform({ position: new Vector3(43.5, 8.8, 21.5), scale: new Vector3(0.7, 0.7, 0.5), rotation: Quaternion.Euler(-15, -90, 0)}),
-    trigger: new utils.TriggerBoxShape(new Vector3(0, 0, 0), new Vector3(0, 0, 0)),
+    trigger: new utils.TriggerBoxShape(new Vector3(75, 15, 35), new Vector3(35, -7, 0)),
     link: "",
   },
 
