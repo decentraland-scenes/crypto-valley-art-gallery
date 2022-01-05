@@ -34,7 +34,7 @@ enum PictureFrameStyle {
   Canvas,
 }
 
-/// --- CMS ---
+/* /// --- CMS ---
 export async function loadPictures(scene: Entity) {
   try {
     // Grab data from https://dclcms.club
@@ -109,4 +109,4 @@ export async function loadPictures(scene: Entity) {
     log('FAILED')
     log(error.toString())
   }
-}
+} */
