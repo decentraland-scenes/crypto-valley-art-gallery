@@ -4,3 +4,4 @@ bin
 *.swp
 *.*~
 desktop.ini
+node_modules
