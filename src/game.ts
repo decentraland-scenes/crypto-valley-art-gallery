@@ -60,3 +60,17 @@ for(let i=0;i<resources.nfts.length;i++){
   frame.setParent(nftPlane)
 
 }
+
+import {Dispenser} from './poap/poap'
+
+let eventTime = 1641427200
+let timer = new Entity()
+engine.addEntity(timer)
+timer.addComponent(new utils.Interval(1000,()=>{
+  let now = Math.floor(Date.now()/1000)
+  if(now >= eventTime){
+    let poapBooth = new Dispenser( {position: new Vector3(114,0.1,14), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)} , "19960");
+  //hud.attachToEntity(poapBooth)
+  engine.removeEntity(timer)
+  }
+}))
