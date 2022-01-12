@@ -1,6 +1,7 @@
 import resources from "./resources"
 import { hud } from "./builderhud/BuilderHUD"
 import * as utils from '@dcl/ecs-scene-utils'
+import { VideoFrame } from "./videoFrame"
 
 const building = new Entity()
 building.addComponent(
@@ -10,16 +11,6 @@ building.addComponent(
 )
 building.addComponent(resources.models.building)
 engine.addEntity(building)
-
-const prize = new Entity('prize')
-prize.addComponent(
-  new Transform({
-    position: new Vector3(54.3,0.1,21),
-  })
-)
-prize.addComponent(resources.models.prize)
-hud.attachToEntity(prize)
-engine.addEntity(prize)
 
 // Music
 const streamSource = new Entity()
@@ -46,6 +37,9 @@ for(let i=0;i<resources.nfts.length;i++){
   const nftPlane = new Entity(resources.nfts[i].name);
   nftPlane.addComponent(new PlaneShape())
   nftPlane.addComponentOrReplace(new Transform(resources.nfts[i].transform))
+  nftPlane.addComponent(new OnPointerDown(()=>{
+    openExternalURL(resources.nfts[i].link)
+  }))
   nftPlane.addComponent(pictureMat)
   engine.addEntity(nftPlane);
   hud.attachToEntity(nftPlane)
@@ -59,4 +53,20 @@ for(let i=0;i<resources.nfts.length;i++){
   frame.addComponent(new GLTFShape('models/frame.glb'))
   frame.setParent(nftPlane)
 
+}
+
+
+for (let i = 0; i < resources.videonfts.length; i++) {
+  const videoFrame = new VideoFrame(
+    resources.videonfts[i].frame,
+    resources.videonfts[i].frameSize,
+    resources.videonfts[i].still,
+    resources.videonfts[i].thumbNail,
+    resources.videonfts[i].video,
+    resources.videonfts[i].transform,
+    resources.videonfts[i].trigger,
+    resources.videonfts[i].title!,
+    resources.videonfts[i].artist!,
+    resources.videonfts[i].link,
+  )
 }
