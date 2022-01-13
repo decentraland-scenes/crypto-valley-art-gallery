@@ -21,7 +21,7 @@ export class VideoFrame extends Entity {
 
 
     const videoMaterial = new Material()
-    videoMaterial.roughness = 0.01
+    videoMaterial.roughness = 0.8
     videoMaterial.albedoTexture = texture
 
     const videoPlane = new Entity()

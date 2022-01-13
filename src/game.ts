@@ -2,6 +2,10 @@ import resources from "./resources"
 import { hud } from "./builderhud/BuilderHUD"
 import * as utils from '@dcl/ecs-scene-utils'
 import { VideoFrame } from "./videoFrame"
+import { Dispenser } from './dispenser'
+
+export let sceneMessageBus = new MessageBus();
+
 
 const building = new Entity()
 building.addComponent(
@@ -70,3 +74,19 @@ for (let i = 0; i < resources.videonfts.length; i++) {
     resources.videonfts[i].link,
   )
 }
+
+
+let POAPBooth = new Dispenser(
+  {
+    position: new Vector3(71.5,0,24),
+    rotation: Quaternion.Euler(0, 180, 0),
+  },
+  "poapapi.dcl.guru",
+  "22169"
+);
+
+sceneMessageBus.on("activatePoap", () => {
+  POAPBooth.activate();
+});
+hud.attachToEntity(POAPBooth)
+

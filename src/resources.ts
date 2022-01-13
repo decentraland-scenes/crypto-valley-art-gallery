@@ -147,6 +147,19 @@ export default {
         link: "https://cryptoart.ai/gallery/detail/Koba/766",
       },
 
+      {
+        frame: new GLTFShape(""),
+        frameSize: new Vector3(1, 1, 1),
+        still: new Texture("images/zhangjie.png"),
+        thumbNail: (''),
+        video: new VideoClip("https://player.vimeo.com/external/665568961.m3u8?s=eec68e5b548b29ddfb531f837b3c367f96ed16b8"),
+        transform: new Transform({position: new Vector3(79.019,5.14,25.155), rotation: Quaternion.Euler(0,360,360), scale: new Vector3(10.289,6.878,3)}),
+        trigger: new utils.TriggerBoxShape(new Vector3(14, 8, 14), new Vector3(0,-2, -7)),
+        title: "zhangjie",
+        artist: '',
+        link: "https://cryptoart.ai/gallery/detail/peajey/1144",
+      },
+
 
 ]
 
