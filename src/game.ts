@@ -43,7 +43,10 @@ for(let i=0;i<resources.nfts.length;i++){
   nftPlane.addComponentOrReplace(new Transform(resources.nfts[i].transform))
   nftPlane.addComponent(new OnPointerDown(()=>{
     openExternalURL(resources.nfts[i].link)
-  }))
+  },
+  {distance: 15}
+  ))
+
   nftPlane.addComponent(pictureMat)
   engine.addEntity(nftPlane);
   hud.attachToEntity(nftPlane)
