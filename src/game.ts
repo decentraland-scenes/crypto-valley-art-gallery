@@ -17,12 +17,12 @@ building.addComponent(resources.models.building)
 engine.addEntity(building)
 
 // Music
-const streamSource = new Entity()
-streamSource.addComponent(
-  new AudioStream("https://streaming.radionomy.com/JamendoLounge")
-)
-streamSource.getComponent(AudioStream).volume = 0.075
-engine.addEntity(streamSource)
+//const streamSource = new Entity()
+//streamSource.addComponent(
+//  new AudioStream("https://streaming.radionomy.com/JamendoLounge")
+//)
+//streamSource.getComponent(AudioStream).volume = 0.00
+//engine.addEntity(streamSource)
 
 // Pictures
 for(let i=0;i<resources.nfts.length;i++){
