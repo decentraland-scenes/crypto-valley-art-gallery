@@ -79,7 +79,7 @@ for (let i = 0; i < resources.videonfts.length; i++) {
 }
 
 
-let POAPBooth = new Dispenser(
+/* let POAPBooth = new Dispenser(
   {
     position: new Vector3(71.5,0,24),
     rotation: Quaternion.Euler(0, 180, 0),
@@ -91,5 +91,5 @@ let POAPBooth = new Dispenser(
 sceneMessageBus.on("activatePoap", () => {
   POAPBooth.activate();
 });
-hud.attachToEntity(POAPBooth)
+hud.attachToEntity(POAPBooth) */
 

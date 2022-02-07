@@ -36,11 +36,11 @@ export class VideoFrame extends Entity {
     videoPlane.addComponent(videoMaterial)
     videoPlane.setParent(this)
 
-    videoPlane.addComponent(new OnPointerDown(()=>{
+/*     videoPlane.addComponent(new OnPointerDown(()=>{
         openExternalURL(link)
       },
       {distance: 15}
-      ))
+      )) */
 
     // let prompt = new ui.CustomPrompt(ui.PromptStyles.LIGHTLARGE, 550,550,true)
     // prompt.addText(title, 0, 225, Color4.Black(), 30)
