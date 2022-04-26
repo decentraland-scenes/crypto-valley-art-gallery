@@ -80,17 +80,17 @@ for (let i = 0; i < resources.videonfts.length; i++) {
 }
 
 
-/* let POAPBooth = new Dispenser(
+let POAPBooth = new Dispenser(
   {
-    position: new Vector3(71.5,0,24),
-    rotation: Quaternion.Euler(0, 180, 0),
+    position: new Vector3(66.1,0,26),
+    rotation: Quaternion.Euler(0,30,0),
   },
   "poapapi.dcl.guru",
-  "22169"
+  "41005"
 );
 
 sceneMessageBus.on("activatePoap", () => {
   POAPBooth.activate();
 });
-hud.attachToEntity(POAPBooth) */
+hud.attachToEntity(POAPBooth)
 
