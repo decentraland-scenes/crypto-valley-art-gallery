@@ -86,7 +86,7 @@ timer.addComponent(new utils.Interval(1000,()=>{
         position: new Vector3(66.1,0,26),
         rotation: Quaternion.Euler(0,30,0),
       },
-      'acd27e4b-24bd-4040-b715-c0e11e863fb0'
+      '2d646145-f2dd-4056-955c-ec988c8bfd78'
     )
   }
 }))

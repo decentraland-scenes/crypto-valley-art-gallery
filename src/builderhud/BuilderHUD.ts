@@ -905,7 +905,6 @@ class BuilderHUD {
         maximizedLabel.paddingBottom = 5
         maximizedLabel.paddingLeft = 15
         maximizedLabel.fontSize = 12
-        maximizedLabel.fontWeight = 'bold'
         maximizedLabel.isPointerBlocker = false
 
         // Now that it is all set up, minimize it
