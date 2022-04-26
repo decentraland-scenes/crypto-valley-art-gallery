@@ -44,7 +44,8 @@ for(let i=0;i<resources.nfts.length;i++){
   nftPlane.addComponent(new OnPointerDown(()=>{
     openExternalURL(resources.nfts[i].link)
   },
-  {distance: 15}
+  {distance: 15,
+  hoverText: 'Visit Site'}
   ))
 
   nftPlane.addComponent(pictureMat)
