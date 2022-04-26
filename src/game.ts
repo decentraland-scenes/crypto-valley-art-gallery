@@ -2,10 +2,7 @@ import resources from "./resources"
 import { hud } from "./builderhud/BuilderHUD"
 import * as utils from '@dcl/ecs-scene-utils'
 import { VideoFrame } from "./videoFrame"
-import { Dispenser } from './dispenser'
-
-export let sceneMessageBus = new MessageBus();
-
+import { createDispenser } from './booth/dispenser'
 
 const building = new Entity()
 building.addComponent(
@@ -80,17 +77,18 @@ for (let i = 0; i < resources.videonfts.length; i++) {
 }
 
 
-let POAPBooth = new Dispenser(
-  {
-    position: new Vector3(66.1,0,26),
-    rotation: Quaternion.Euler(0,30,0),
-  },
-  "poapapi.dcl.guru",
-  "41005"
-);
-
-sceneMessageBus.on("activatePoap", () => {
-  POAPBooth.activate();
-});
-hud.attachToEntity(POAPBooth)
+let timer = new Entity()
+timer.addComponent(new utils.Interval(1000,()=>{
+  if(Math.floor(Date.now()/1000) >= 1651050000){
+    engine.removeEntity(timer)
+    createDispenser(
+      {
+        position: new Vector3(66.1,0,26),
+        rotation: Quaternion.Euler(0,30,0),
+      },
+      'acd27e4b-24bd-4040-b715-c0e11e863fb0'
+    )
+  }
+}))
+engine.addEntity(timer)
 
