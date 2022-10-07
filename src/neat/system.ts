@@ -1,4 +1,4 @@
-import { getExplorerConfiguration, isPreviewMode } from "@decentraland/EnvironmentAPI"
+import { isPreviewMode } from "@decentraland/EnvironmentAPI"
 import { getUserData } from "@decentraland/Identity"
 import { signedFetch } from "@decentraland/SignedFetch"
 import { claimlink, endTime, showMessage, socket, starTime, verified, verify } from "./neat"

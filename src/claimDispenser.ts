@@ -38,7 +38,7 @@ export async function claimWearable(ent:Entity){
         const parcel = await getParcel()
 
         let baseParcel = parcel.land.sceneJsonData.scene.base
-        let response = await signedFetch("https://lkdcl.co/dcl/claimgitex?&base=" + baseParcel)
+        let response = await signedFetch("https://lkdcl.co/neat/dcl/claimgitex?&base=" + baseParcel)
         let json
         if (response.text) {
           json = await JSON.parse(response.text)
