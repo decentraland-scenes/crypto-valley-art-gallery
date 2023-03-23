@@ -56,7 +56,7 @@ export default {
       {
         frame: new GLTFShape("models/tv.glb"),
         frameSize: new Vector3(1.3, 1.3, 1),
-        still: new Texture("images/Oasis.png"),
+        still: new Texture(""),
         thumbNail: (''),
         video: new VideoClip("https://player.vimeo.com/external/810909065.m3u8?s=6dbd23b76b1b8cba9abfaf2aaa20b4f28ffc5823"),
         transform: new Transform({position: new Vector3(114.519,8,21.355), rotation: Quaternion.Euler(345,90,360), scale: new Vector3(8,4.5,3)}),
