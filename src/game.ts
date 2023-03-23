@@ -1,13 +1,11 @@
 import resources from "./resources"
-import { loadPictures } from "./modules/nftBuilder"
+import { hud } from "./builderhud/BuilderHUD"
+import { VideoFrame } from "./videoFrame"
+
+
 
 const building = new Entity()
-building.addComponent(
-  new Transform({
-    position: new Vector3(0, 0, 0),
-  })
-)
-building.addComponent(resources.models.building)
+building.addComponent(new GLTFShape('models/building.glb'))
 engine.addEntity(building)
 
 // Music
@@ -18,5 +16,60 @@ streamSource.addComponent(
 streamSource.getComponent(AudioStream).volume = 0.075
 engine.addEntity(streamSource)
 
+
+
 // Pictures
-loadPictures(building)
+for(let i=0;i<resources.nfts.length;i++){
+
+  let imageTexture = new Texture(resources.nfts[i].image)
+
+  let pictureMat = new Material()
+  pictureMat.albedoTexture = imageTexture
+  pictureMat.specularIntensity = 0
+  pictureMat.metallic = 0
+  pictureMat.roughness = 1
+  pictureMat.emissiveTexture = imageTexture
+  pictureMat.emissiveIntensity = 0.5
+  pictureMat.emissiveColor = Color3.White()
+
+  const nftPlane = new Entity(resources.nfts[i].name);
+  nftPlane.addComponent(new PlaneShape())
+  nftPlane.addComponentOrReplace(new Transform(resources.nfts[i].transform))
+  nftPlane.addComponent(new OnPointerDown(()=>{
+    openExternalURL(resources.nfts[i].link)
+  },
+  { hoverText: "Visit Site",
+    distance: 15}
+  ))
+
+  nftPlane.addComponent(pictureMat)
+  engine.addEntity(nftPlane);
+  hud.attachToEntity(nftPlane)
+
+  let frame = new Entity()
+  frame.addComponent(new Transform({
+    position: new Vector3(0,0, 0.0),
+    scale: new Vector3(1.2, 1.2, 1.0)
+
+  }))
+  frame.addComponent(new GLTFShape('models/frame.glb'))
+  frame.setParent(nftPlane)
+
+}
+
+
+// Videos
+for (let i = 0; i < resources.videonfts.length; i++) {
+  const videoFrame = new VideoFrame(
+    resources.videonfts[i].frame,
+    resources.videonfts[i].frameSize,
+    resources.videonfts[i].still,
+    resources.videonfts[i].thumbNail,
+    resources.videonfts[i].video,
+    resources.videonfts[i].transform,
+    resources.videonfts[i].trigger,
+    resources.videonfts[i].title!,
+    resources.videonfts[i].artist!,
+    resources.videonfts[i].link,
+  )
+}
