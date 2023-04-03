@@ -1,6 +1,7 @@
 import * as utils from "@dcl/ecs-scene-utils"
 import * as ui from '@dcl/ui-scene-utils'
 import { hud } from "./builderhud/BuilderHUD"
+import resources from "./resources"
 
 export class VideoFrame extends Entity {
   public videoTexture: VideoTexture

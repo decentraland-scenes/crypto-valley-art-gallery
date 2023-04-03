@@ -11,59 +11,69 @@ export default {
   
   nfts:[
 
-    {name:'1',link:'https://metahistory.gallery/warline/560', image:'resources/1.png', transform:{position: new Vector3(49.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(2.07,3,2)}},
-    {name:'2',link:'https://metahistory.gallery/warline/612', image:'resources/2.png', transform:{position: new Vector3(54.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'3',link:'https://metahistory.gallery/warline/716', image:'resources/3.png', transform:{position: new Vector3(59.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'4',link:'https://metahistory.gallery/warline/717', image:'resources/4.png', transform:{position: new Vector3(64.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    //Non Bar Left Wall
+    {artist:'Edward Bowen', title:'Unknown', origin:'Trinidad & Tobago', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/1.png', thumbnail:'resources/1thumb.png', transform:{position: new Vector3(49.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Edward Bowen', title:'Edge of the White Forest', origin:'Trinidad & Tobago', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/2.png', thumbnail:'resources/2thumb.png', transform:{position: new Vector3(54.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Edward Bowen', title:'Hed', origin:'Trinidad & Tobago', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/3.png', thumbnail:'resources/3thumb.png', transform:{position: new Vector3(59.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Edward Bowen', title:'Diptych', origin:'Trinidad & Tobago', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/4.png', thumbnail:'resources/4thumb.png', transform:{position: new Vector3(64.1,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+ 
+    //Non Bar Right Wall
+    {artist:'Black Bird (Ronald Cyrille)', title:'Caribbean Lovers', origin:'Guadeloupe', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/5.png', thumbnail:'resources/5thumb.png', transform:{position: new Vector3(45.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Black Bird (Ronald Cyrille)', title:'Suspension', origin:'Guadeloupe', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/6.png', thumbnail:'resources/6thumb.png', transform:{position: new Vector3(50.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Black Bird (Ronald Cyrille)', title:'Untitled', origin:'Guadeloupe', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/7.png', thumbnail:'resources/7thumb.png', transform:{position: new Vector3(55.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Black Bird (Ronald Cyrille)', title:'Cultivez Garden', origin:'Guadeloupe', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/8.png', thumbnail:'resources/8thumb.png', transform:{position: new Vector3(60.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
 
-    {name:'5',link:'https://metahistory.gallery/warline/668', image:'resources/5.png', transform:{position: new Vector3(45.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'6',link:'https://metahistory.gallery/warline/468', image:'resources/6.png', transform:{position: new Vector3(50.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'7',link:'https://metahistory.gallery/warline/618', image:'resources/7.png', transform:{position: new Vector3(55.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'8',link:'https://metahistory.gallery/warline/719', image:'resources/8.png', transform:{position: new Vector3(60.4,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    //Middle Wall Main Area
+    {artist:'La Ninfaaa (Sofia Maldonado)', title:'Unity', origin:'Puerto Rico & Cuba', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/9.png', thumbnail:'resources/9thumb.png', transform:{position: new Vector3(71.5,3.2,25.12), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'La Ninfaaa (Sofia Maldonado)', title:'Beauty', origin:'Puerto Rico & Cuba', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/10.png', thumbnail:'resources/10thumb.png', transform:{position: new Vector3(76.5,3.2,25.12), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Carlos Davila Rinaldi', title:'Ensamble', origin:'Puerto Rico', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/11.png', thumbnail:'resources/11thumb.png', transform:{position: new Vector3(81.5,3.2,25.12), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Carlos Davila Rinaldi', title:'Patidifusx', origin:'Puerto Rico', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/12.png', thumbnail:'resources/12thumb.png', transform:{position: new Vector3(86.5,3.2,25.12), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
 
-    {name:'9',link:'https://metahistory.gallery/warline/474', image:'resources/9.png', transform:{position: new Vector3(71.5,3.2,25.15), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'10',link:'https://metahistory.gallery/warline/674', image:'resources/10.png', transform:{position: new Vector3(76.5,3.2,25.15), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'11',link:'https://metahistory.gallery/warline/775', image:'resources/11.png', transform:{position: new Vector3(81.5,3.2,25.15), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'12',link:'https://metahistory.gallery/warline/626', image:'resources/12.png', transform:{position: new Vector3(86.5,3.2,25.15), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-
-    {name:'13',link:'https://metahistory.gallery/warline/730', image:'resources/13.png', transform:{position: new Vector3(97.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'14',link:'https://metahistory.gallery/warline/732', image:'resources/14.png', transform:{position: new Vector3(102.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(2.07,3,2)}},
-    {name:'15',link:'https://metahistory.gallery/warline/136', image:'resources/15.png', transform:{position: new Vector3(107.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'16',link:'https://metahistory.gallery/warline/635', image:'resources/16.png', transform:{position: new Vector3(112.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    //Bar Left Wall
+    {artist:'Isabel Berenos', title:'Concha Shell', origin:'Curaçao', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/13.png', thumbnail:'resources/13thumb.png', transform:{position: new Vector3(97.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Dominique Hunter', title:'Look-out (Dusk)', origin:'Guyana', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/14.png', thumbnail:'resources/14thumb.png', transform:{position: new Vector3(102.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Calvert Jones', title:'The Holy Herb', origin:'St. Vincent & the Grenadines', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/15.png', thumbnail:'resources/15thumb.png', transform:{position: new Vector3(107.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Karly', title:'The River', origin:'Jamaica', link:'https://expressions.com', info:'Dropping on Expressions.com April 18', image:'resources/16.png', thumbnail:'resources/16thumb.png', transform:{position: new Vector3(112.6,3,33.76), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
     
-    {name:'17',link:'https://metahistory.gallery/warline/493', image:'resources/17.png', transform:{position: new Vector3(93.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'18',link:'https://metahistory.gallery/warline/646', image:'resources/18.png', transform:{position: new Vector3(98.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'19',link:'https://metahistory.gallery/warline/599', image:'resources/19.png', transform:{position: new Vector3(103.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'20',link:'https://metahistory.gallery/warline/752', image:'resources/20.png', transform:{position: new Vector3(108.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    //Bar Right Wall
+    {artist:'Yeabtsega Getachew', title:'Queen of ...', origin:'Ethiopia', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/17.png', thumbnail:'resources/17thumb.png', transform:{position: new Vector3(93.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Yeabtsega Getachew', title:'Untitled', origin:'Ethiopia', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/18.png', thumbnail:'resources/18thumb.png', transform:{position: new Vector3(98.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Mark Eyafa', title:'Reality', origin:'Cameroon', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/19.png', thumbnail:'resources/19thumb.png', transform:{position: new Vector3(103.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Mark Eyafa', title:'No Name', origin:'Cameroon', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/20.png', thumbnail:'resources/20thumb.png', transform:{position: new Vector3(108.7,3,4.2), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
 
-    {name:'21',link:'https://metahistory.gallery/warline/654', image:'resources/21.png', transform:{position: new Vector3(71.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'22',link:'https://metahistory.gallery/warline/657', image:'resources/22.png', transform:{position: new Vector3(76.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'23',link:'https://metahistory.gallery/warline/608', image:'resources/23.png', transform:{position: new Vector3(81.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
-    {name:'24',link:'https://metahistory.gallery/warline/659', image:'resources/24.png', transform:{position: new Vector3(86.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    //Middle Wall Small Area
+    {artist:'Oluwafunke Oladimeji', title:'Lagos River Scene', origin:'Nigeria', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/21.png', thumbnail:'resources/21thumb.png', transform:{position: new Vector3(71.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Oluwafunke Oladimeji', title:'Unknown', origin:'Nigeria', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/22.png', thumbnail:'resources/22thumb.png', transform:{position: new Vector3(76.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Themanyphacedgod (Samuel Blankson)', title:'Fighting My Demons', origin:'Ghana', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/23.png', thumbnail:'resources/23thumb.png', transform:{position: new Vector3(81.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
+    {artist:'Harry Odunze', title:'Myth5', origin:'Nigeria', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/24.png', thumbnail:'resources/24thumb.png', transform:{position: new Vector3(86.5,3.2,25.54), rotation: Quaternion.Euler(0,180,180), scale: new Vector3(3,3,2)}},
 
-    {name:'25',link:'https://metahistory.gallery/warline/313', image:'resources/25.png', transform:{position: new Vector3(63.8,3.2,37.24), rotation: Quaternion.Euler(0,270,180), scale: new Vector3(3,3,2)}},
-    {name:'26',link:'https://metahistory.gallery/warline/64', image:'resources/26.png', transform:{position: new Vector3(68.8,3.2,41.84), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'27',link:'https://metahistory.gallery/warline/327', image:'resources/27.png', transform:{position: new Vector3(89.25,3.2,41.84), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
-    {name:'28',link:'https://metahistory.gallery/warline/544', image:'resources/28.png', transform:{position: new Vector3(94.17,3.2,37.24), rotation: Quaternion.Euler(0,90,180), scale: new Vector3(3,3,2)}},
+    //Small Area Excess 4 Images
+    {artist:'Nkosana', title:'Stunna', origin:'South Africa', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/25.png', thumbnail:'resources/25thumb.png', transform:{position: new Vector3(63.82,3.2,37.24), rotation: Quaternion.Euler(0,270,180), scale: new Vector3(3,3,2)}},
+    {artist:'Joyce Jazz', title:'Untitled', origin:'Angola', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/26.png', thumbnail:'resources/26thumb.png', transform:{position: new Vector3(68.8,3.2,41.84), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    {artist:'Denzel Muhumuza', title:'Matriarchy', origin:'Uganda', link:'https://expressions.com', info:'Dropping on Expressions.com this summer', image:'resources/27.png', thumbnail:'resources/27thumb.png', transform:{position: new Vector3(89.25,3.2,41.84), rotation: Quaternion.Euler(0,0,180), scale: new Vector3(3,3,2)}},
+    //{artist:'Humberto Diaz', title:'Blue Meristy', origin:'Cuba', link:'https://expressions.com', info:'Write stuff here', image:'resources/28.png', thumbnail:'resources/28thumb.png', transform:{position: new Vector3(94.17,3.2,37.24), rotation: Quaternion.Euler(0,90,180), scale: new Vector3(3,3,2)}},
 
-    {name:'29',link:'https://metahistory.gallery/warline/347', image:'resources/29.png', transform:{position: new Vector3(67.7,3,8), rotation: Quaternion.Euler(0,90,180), scale: new Vector3(3,3,2)}},
-    {name:'30',link:'https://metahistory.gallery/warline/558', image:'resources/30.png', transform:{position: new Vector3(90.24,3,8), rotation: Quaternion.Euler(0,270,180), scale: new Vector3(3,3,2)}},
+    //Main Area Excess 2 Images
+    //{artist:'29', title:'', origin:'', link:'https://expressions.com', info:'Write stuff here', image:'resources/29.png', thumbnail:'resources/29thumb.png', transform:{position: new Vector3(67.7,3,8), rotation: Quaternion.Euler(0,90,180), scale: new Vector3(3,3,2)}},
+    //{artist:'30', title:'', origin:'', link:'https://expressions.com', info:'Write stuff here', image:'resources/30.png', thumbnail:'resources/30thumb.png', transform:{position: new Vector3(90.24,3,8), rotation: Quaternion.Euler(0,270,180), scale: new Vector3(3,3,2)}},
 
   ],
 
    videonfts:[
         
       {
-        frame: new GLTFShape("models/tv.glb"),
-        frameSize: new Vector3(1.3, 1.3, 1),
-        still: new Texture(""),
-        thumbNail: (''),
-        video: new VideoClip("https://player.vimeo.com/external/810909065.m3u8?s=6dbd23b76b1b8cba9abfaf2aaa20b4f28ffc5823"),
-        transform: new Transform({position: new Vector3(114.519,8,21.355), rotation: Quaternion.Euler(345,90,360), scale: new Vector3(8,4.5,3)}),
-        trigger: new utils.TriggerBoxShape(new Vector3(98, 15, 40), new Vector3(-36,-5,2)),
-        title: "Video",
-        artist: '',
-        link: "",
+        frame: new GLTFShape("models/videoFrame.glb"),
+        frameSize: new Vector3(1, 1, 1),
+        still: new Texture("resources/blueMeristy.png"),
+        thumbnail: ('resources/blueMeristythumb.png'),
+        video: new VideoClip("https://player.vimeo.com/external/814273449.m3u8?s=597f6fb48d396377c65d5575c5b4eac70f4861d9"),
+        transform: new Transform({position: new Vector3(94.17,3.5,37.24), rotation: Quaternion.Euler(0,90,0), scale: new Vector3(5,5,2)}),
+        trigger: new utils.TriggerBoxShape(new Vector3(6, 6, 4), new Vector3(-3,-2,0)),
+        title: "Blue Meristy",
+        artist: 'Humberto Diaz',
+        origin: 'Cuba',
+        link: "https://expressions.com",
+        info: 'Dropping on Expressions.com April 18'
       },
  
 
