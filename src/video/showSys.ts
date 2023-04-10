@@ -174,8 +174,8 @@ export class ShowSystem {
         this.screen.getComponent(Transform).scale = new Vector3(6.2 * 1.78, -6.2, 1)
         this.screen2.getComponent(Transform).scale = new Vector3(6.2 * 1.78, -6.2, 1)
 
-        this.videoTexture.playing = true
-        this.videoTexture.loop = true
+        //this.videoTexture.playing = true
+        //this.videoTexture.loop = true
     }
 
     playVideo(show: any, seekTime:number = 0) {
